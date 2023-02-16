@@ -25,6 +25,7 @@ body{
     color: #ffffff80;
     font-size: xx-large;
     padding-top: 80px;
+    text-align: center;
 }
 .login-card{
     position: relative;
@@ -76,7 +77,7 @@ body{
     border: 2px solid #10449A;
 }
 
-.login-form > button{
+.login-button{
     cursor: pointer;
     width: 100%;
     padding: 0 16px;
