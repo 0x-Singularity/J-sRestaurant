@@ -29,6 +29,44 @@ public class OrderingSystem
 	{
 
 	}
+	public void AddToOrderList(Order NewOrder)
+	{
+		OrderList.Add(NewOrder);
+	}
+	public void RemoveFromOrderList(Order OrderToBeRemoved)
+	{
+		OrderList.Remove(OrderToBeRemoved);
+	}
+	public void ReviseOrder(Order UpdatedOrder)
+	{
+		foreach(Order O in OrderList)
+		{
+			if (O.GetID() == UpdatedOrder.GetID())
+			{
+				OrderList[OrderList.IndexOf(O)] = UpdatedOrder;
+				break;
+			}
+		}
+    }
+    public List<Order> GetOrderList()
+    {
+		return OrderList;
+    }
+	public void UpdateOrderList(List<Order> UpdatedOrderList)
+	{
+		this.OrderList = UpdatedOrderList;
+	}
+	public Order GetOrder(int OrderID)
+	{
+		foreach (Order O in OrderList)
+		{
+			if (O.GetID() == OrderID)
+			{
+				return O;
+			}
+		}
+        throw new Exception("Error: Order not contained in list.");
+    }
 }
 
 public class Order
@@ -45,6 +83,10 @@ public class Order
         OrderID = OrderNum++;
 		Status = "New";
     }
+	public int GetID()
+	{
+		return OrderID;
+	}
 	public void AddItemToOrder(int ItemID)
 	{
 		Menu menu = new Menu();
@@ -71,7 +113,7 @@ public class Menu
     protected List<Item> MenuItems = new List<Item>();
 	public void AddAllItemstoMenuItems()
 	{
-		MenuItems.Add(new Item("Sweet Tea", 2.00f, false));
+		MenuItems.Add(new Item("Sweet Tea", 2.00f, false, "Beverage"));
 		//add the rest later if using this code
 	}
 	public Item FindItem(int ItemID)
@@ -87,12 +129,14 @@ public class Item
 	private static int ItemNum = 1;
 	private int ItemID;
 	private bool Customizable;
-	public Item(string Name, float Cost, bool Customizable)
+	private string Category;
+	public Item(string Name, float Cost, bool Customizable, string Category)
 	{
 		this.Name = Name;
 		ItemID = ItemNum++;
 		this.Cost = Cost;
 		this.Customizable = Customizable;
+		this.Category = Category;
 	}
 	public void Customize()
 	{
@@ -109,13 +153,12 @@ public class Item
 public class Manager
 {
 	private string Username;
+	private string Password;
 	List<Employee> Employees = new List<Employee>();
-	public Manager()
+	public Manager(List<Employee> Employees, string Username, string Password)
 	{
-
-	}
-	public Manager(List<Employee> Employees)
-	{
+		this.Username = Username;
+		this.Password = Password;
 		this.Employees = Employees;
 	}
 	public void AddNewEmployee(Employee EmployeeToAdd)
@@ -150,18 +193,14 @@ public class ManagerLogin
 	{
 		ManagerLoggedIn = false;
 	}
-	public bool GetLoggedIn()
-	{
-		return ManagerLoggedIn;
-	}
 }
 public class EmployeeLogin
 {
-	private ManagerLogin ML;
+	private bool ManagerLoggedIn;
 	private bool EmployeeLoggedIn;
-	EmployeeLogin(ManagerLogin mL)
+	EmployeeLogin(bool ManagerLoggedIn)
     {
-        ML = mL;
+        this.ManagerLoggedIn = ManagerLoggedIn;
     }
     public void CheckLogInInformation()
     {
@@ -169,14 +208,14 @@ public class EmployeeLogin
     }
     public void LogIn()
 	{
-		if (ML.GetLoggedIn())
+		if (ManagerLoggedIn)
 		{
 			EmployeeLoggedIn = true;
 		}
 	}
     public void LogOut()
     {
-        if (ML.GetLoggedIn())
+        if (ManagerLoggedIn)
         {
 			EmployeeLoggedIn = false;
         }
@@ -188,79 +227,134 @@ public class Table
 	private int TableID;
     private string CurrentStatus = "";
 	private Order CurrentOrder;
+	private OrderingSystem OrderSystem;
     bool StatusUpdate = false; //If StatusUpdate = true, the status is being changed.
-    public Table()
+    public Table(OrderingSystem OrderSystem)
 	{
 		CurrentStatus = "Clean";
 		TableID = TableNumber++;
 		CurrentOrder = new Order();
+		this.OrderSystem = OrderSystem;
+		OrderSystem.AddToOrderList(CurrentOrder);
 	}
-	public Table(string Status, int TableID, Order order)
+	public Table(string Status, int TableID, Order order, OrderingSystem OrderSystem)
 	{
-		ChangeStatus(Status);
+		ChangeTableStatus(Status);
 		this.TableID = TableID;
 		CurrentOrder = order;
+		this.OrderSystem = OrderSystem;
 	}
-	public void ChangeStatus(string Status)
+	public void ChangeTableStatus(string Status)
 	{
-		CurrentStatus = Status;
+		if (Status.Equals("Clean") || Status.Equals("Occupied") || Status.Equals("Needs Attention"))
+		{
+			CurrentStatus = Status;
+		}
+		else
+		{
+			throw new Exception("Error: Table status could not be changed.");
+		}
+	}
+	public void NewOrder()
+	{
+		List<Order> ListOfOrders = OrderSystem.GetOrderList();
+		OrderSystem.ReviseOrder(CurrentOrder);
+		CurrentOrder = new Order();
+		OrderSystem.UpdateOrderList(ListOfOrders);
+	}
+	public void ChangeCurrentOrder()
+	{
+		OrderSystem.ReviseOrder(CurrentOrder);
+		
+	}
+	public void ModifyCurrentOrder()
+	{
+
+	}
+	public void SendOrderToKitchen()
+	{
+
 	}
 }
 public class Employee 
 {
-	private string Name;
+	protected string Name;
+    protected bool Employed = true;
+    protected static int EmployeeCounter = 1;
+    protected static int EmployeeID;
     protected List<Table> TablesAssigned;
     public Employee(List<Table> TablesAssigned, string Name)
     {
         this.TablesAssigned = TablesAssigned;
 		this.Name = Name;
+		EmployeeID = EmployeeCounter++;
     }
+	public void ChangeEmploymentStatus()
+	{
+		Employed = !Employed;
+	}
+	public bool isEmployed()
+	{
+		return Employed;
+	}
 }
 public class Busboy : Employee
 {
-	public Busboy(List<Table> TablesAssigned, string Name) : base(TablesAssigned, Name)
-    {
-
-	}
-    public virtual void ChangeStatus(Table AssignedTable, byte Status)
-    {
-        AssignedTable.ChangeStatus("Clean");
-    }
-}
-public class Host : Busboy
-{
-	public Host(List<Table> TablesAssigned, string Name) : base(TablesAssigned, Name)
-    {
-
-	}
-	public override void ChangeStatus(Table AssignedTable, byte Status)
+	public Busboy(List<Table> TablesAssigned, string Name) : base(TablesAssigned, Name) { }
+	public virtual void ChangeTableStatus(Table AssignedTable, byte Status)
 	{
 		if (Status == 0)
 		{
-			AssignedTable.ChangeStatus("Clean");
+			AssignedTable.ChangeTableStatus("Clean");
+
+		}
+	}
+}
+public class Host : Busboy
+{
+	public Host(List<Table> TablesAssigned, string Name) : base(TablesAssigned, Name) { }
+	public override void ChangeTableStatus(Table AssignedTable, byte Status)
+	{
+		if (Status == 0)
+		{
+			AssignedTable.ChangeTableStatus("Clean");
 		}
 		else if (Status == 1)
 		{
-			AssignedTable.ChangeStatus("Occupied");
+			AssignedTable.ChangeTableStatus("Occupied");
 		}
 	}
 }
 public class Waiter : Host
 {
-	public Waiter(List<Table> TablesAssigned, string Name) : base(TablesAssigned, Name)
+	public Waiter(List<Table> TablesAssigned, string Name) : base(TablesAssigned, Name) { }
+    public override void ChangeTableStatus(Table AssignedTable, byte Status)
     {
+        AssignedTable.ChangeTableStatus("Needs Attention");
+    }
+	public void CreateNewOrder(Table T)
+	{
 
 	}
-    public override void ChangeStatus(Table AssignedTable, byte Status)
-    {
-        AssignedTable.ChangeStatus("Needs Attention");
-    }
+	public void ChangeCurrentOrder(Table T)
+	{
+		T.ChangeCurrentOrder();
+	}
+	public void ModifyCurrentOrder(Table T)
+	{
+		T.ModifyCurrentOrder();
+	}
+	public void SendOrderToKitchen(Table T)
+	{
+		T.SendOrderToKitchen();
+	}
 }
 public class Cook : Waiter
 {
-	public Cook(List<Table> TablesAssigned, string Name) : base(TablesAssigned, Name)
-    {
-
+	public Cook(List<Table> TablesAssigned, string Name) : base(TablesAssigned, Name) { }
+	public void ChangeOrderStatus(Order OrderforStatusChange)
+	{
+		
 	}
 }
 public class Analytics
