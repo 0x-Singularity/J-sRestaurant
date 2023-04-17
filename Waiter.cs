@@ -1,18 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Sprint_2_ISWE_Group_1_1
+namespace Sprint_2_Group_1_1
 {
-    internal class Waiter : Employee
+    internal class Waiter : FloorStaff
     {
-        public Waiter(List<Table> TablesAssigned, string Name) : base(TablesAssigned, Name) { }
-        public void ChangeTableStatus(Table AssignedTable, byte Status)
+        public Waiter(string Name, int Password) : base(Name, Password) { }
+        public override void ChangeTableStatus(Table AssignedTable, byte Status)
         {
-            AssignedTable.ChangeTableStatus("Needs Attention");
+            if (Status == 0)
+            {
+                AssignedTable.ChangeTableStatus("Clean");
+            }
+            else if (Status == 1)
+            {
+                AssignedTable.ChangeTableStatus("Occupied");
+            }
+            else
+            {
+                AssignedTable.ChangeTableStatus("Needs Attention");
+            }
         }
         public void CreateNewOrder(Table T)
         {
-
+            
         }
         public void ChangeCurrentOrder(Table T)
         {

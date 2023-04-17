@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Sprint_2_ISWE_Group_1_1
+namespace Sprint_2_Group_1_1
 {
-    internal class Host : Employee
+    internal class Host : FloorStaff
     {
-        public Host(List<Table> TablesAssigned, string Name) : base(TablesAssigned, Name) { }
-        public void ChangeTableStatus(Table AssignedTable, byte Status)
+        public Host(string Name, int Password) : base(Name, Password) { }
+        public override void ChangeTableStatus(Table AssignedTable, byte Status)
         {
             if (Status == 0)
             {

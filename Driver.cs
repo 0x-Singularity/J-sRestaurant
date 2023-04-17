@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
-namespace Sprint_2_ISWE_Group_1_1
+namespace Sprint_2_Group_1_1
 {
     internal static class Driver
     {
@@ -14,7 +15,8 @@ namespace Sprint_2_ISWE_Group_1_1
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            ScreenHost GUISystem = new ScreenHost();
+            Application.Run(GUISystem);
         }
     }
 }
