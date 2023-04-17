@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_LastSelectedProfileId>C:\Users\carde\Documents\Spring 2023\Introduction to Software Engineering\Project Materials\Sprint 2 GUI System\Sprint 2 GUI Group1-1\Sprint 2 GUI Group1-1\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="EmployeeLoginScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="OrderDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ScreenHost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MenuForEmployee.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

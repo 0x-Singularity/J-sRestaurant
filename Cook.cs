@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Sprint_2_ISWE_Group_1_1
+namespace Sprint_2_Group_1_1
 {
-    internal class Cook : Waiter
+    internal class Cook : Employee
     {
-        public Cook(List<Table> TablesAssigned, string Name) : base(TablesAssigned, Name)
-        {
-
-        }
+        public Cook(string Name, int Password) : base(Name, Password) { }
     }
 }

@@ -1,18 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Sprint_2_ISWE_Group_1_1
+namespace Sprint_2_Group_1_1
 {
     internal class Manager
     {
         private string Username;
         private string Password;
-        List<Employee> Employees = new List<Employee>();
+        private List<Employee> Employees;
         public Manager(List<Employee> Employees, string Username, string Password)
         {
             this.Username = Username;
             this.Password = Password;
             this.Employees = Employees;
+        }
+
+        public Employee CheckEmployeePasswords(int PasswordToCheck)
+        {
+            foreach (Employee E in Employees)
+            {
+                int TempPass = E.GetEmployeePassword();
+                if (PasswordToCheck == TempPass)
+                {
+                    return E as Employee;
+                }
+            }
+            return null;
         }
         public void AddNewEmployee(Employee EmployeeToAdd)
         {
