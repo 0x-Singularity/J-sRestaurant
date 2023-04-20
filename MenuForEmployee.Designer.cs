@@ -31,14 +31,19 @@
             this.Login = new System.Windows.Forms.Button();
             this.DiningFloor = new System.Windows.Forms.Button();
             this.ShowCurrentEmployee = new System.Windows.Forms.Label();
-            this.ToMainMenu = new System.Windows.Forms.Button();
+            this.OrderHistory = new System.Windows.Forms.Button();
+            this.GraphOfTheDay = new System.Windows.Forms.PictureBox();
+            this.ToManagerLogin = new System.Windows.Forms.Button();
+            this.BackgroundEmployeeMenu = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.GraphOfTheDay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BackgroundEmployeeMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // Login
             // 
-            this.Login.Location = new System.Drawing.Point(651, 96);
+            this.Login.Location = new System.Drawing.Point(689, 171);
             this.Login.Name = "Login";
-            this.Login.Size = new System.Drawing.Size(120, 120);
+            this.Login.Size = new System.Drawing.Size(190, 190);
             this.Login.TabIndex = 0;
             this.Login.Text = "Login";
             this.Login.UseVisualStyleBackColor = true;
@@ -46,9 +51,9 @@
             // 
             // DiningFloor
             // 
-            this.DiningFloor.Location = new System.Drawing.Point(815, 96);
+            this.DiningFloor.Location = new System.Drawing.Point(885, 171);
             this.DiningFloor.Name = "DiningFloor";
-            this.DiningFloor.Size = new System.Drawing.Size(120, 120);
+            this.DiningFloor.Size = new System.Drawing.Size(190, 190);
             this.DiningFloor.TabIndex = 1;
             this.DiningFloor.Text = "Dining Room";
             this.DiningFloor.UseVisualStyleBackColor = true;
@@ -56,33 +61,68 @@
             // 
             // ShowCurrentEmployee
             // 
-            this.ShowCurrentEmployee.Location = new System.Drawing.Point(440, 40);
+            this.ShowCurrentEmployee.BackColor = System.Drawing.SystemColors.Control;
+            this.ShowCurrentEmployee.Location = new System.Drawing.Point(540, 75);
             this.ShowCurrentEmployee.Name = "ShowCurrentEmployee";
             this.ShowCurrentEmployee.Size = new System.Drawing.Size(200, 25);
             this.ShowCurrentEmployee.TabIndex = 2;
             this.ShowCurrentEmployee.Text = "Current Employee:";
             this.ShowCurrentEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // ToMainMenu
+            // OrderHistory
             // 
-            this.ToMainMenu.Location = new System.Drawing.Point(651, 253);
-            this.ToMainMenu.Name = "ToMainMenu";
-            this.ToMainMenu.Size = new System.Drawing.Size(120, 120);
-            this.ToMainMenu.TabIndex = 3;
-            this.ToMainMenu.Text = "button1";
-            this.ToMainMenu.UseVisualStyleBackColor = true;
+            this.OrderHistory.Location = new System.Drawing.Point(689, 367);
+            this.OrderHistory.Name = "OrderHistory";
+            this.OrderHistory.Size = new System.Drawing.Size(190, 190);
+            this.OrderHistory.TabIndex = 3;
+            this.OrderHistory.Text = "Order History";
+            this.OrderHistory.UseVisualStyleBackColor = true;
+            // 
+            // GraphOfTheDay
+            // 
+            this.GraphOfTheDay.Image = global::Sprint_2_GUI_Group1_1.Properties.Resources.Picture_of_Graph_of_Orders;
+            this.GraphOfTheDay.Location = new System.Drawing.Point(129, 171);
+            this.GraphOfTheDay.Name = "GraphOfTheDay";
+            this.GraphOfTheDay.Size = new System.Drawing.Size(540, 385);
+            this.GraphOfTheDay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.GraphOfTheDay.TabIndex = 4;
+            this.GraphOfTheDay.TabStop = false;
+            // 
+            // ToManagerLogin
+            // 
+            this.ToManagerLogin.Location = new System.Drawing.Point(885, 367);
+            this.ToManagerLogin.Name = "ToManagerLogin";
+            this.ToManagerLogin.Size = new System.Drawing.Size(190, 190);
+            this.ToManagerLogin.TabIndex = 5;
+            this.ToManagerLogin.Text = "Manager Login";
+            this.ToManagerLogin.UseVisualStyleBackColor = true;
+            // 
+            // BackgroundEmployeeMenu
+            // 
+            this.BackgroundEmployeeMenu.Image = global::Sprint_2_GUI_Group1_1.Properties.Resources.BlackWavesResized;
+            this.BackgroundEmployeeMenu.Location = new System.Drawing.Point(0, 0);
+            this.BackgroundEmployeeMenu.Name = "BackgroundEmployeeMenu";
+            this.BackgroundEmployeeMenu.Size = new System.Drawing.Size(1280, 722);
+            this.BackgroundEmployeeMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.BackgroundEmployeeMenu.TabIndex = 6;
+            this.BackgroundEmployeeMenu.TabStop = false;
             // 
             // MenuForEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.Controls.Add(this.ToMainMenu);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.ToManagerLogin);
+            this.Controls.Add(this.GraphOfTheDay);
+            this.Controls.Add(this.OrderHistory);
             this.Controls.Add(this.ShowCurrentEmployee);
             this.Controls.Add(this.DiningFloor);
             this.Controls.Add(this.Login);
+            this.Controls.Add(this.BackgroundEmployeeMenu);
             this.Name = "MenuForEmployee";
-            this.Size = new System.Drawing.Size(1080, 520);
+            this.Size = new System.Drawing.Size(1280, 720);
+            ((System.ComponentModel.ISupportInitialize)(this.GraphOfTheDay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BackgroundEmployeeMenu)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -92,6 +132,9 @@
         private Button Login;
         private Button DiningFloor;
         private Label ShowCurrentEmployee;
-        private Button ToMainMenu;
+        private Button OrderHistory;
+        private PictureBox GraphOfTheDay;
+        private Button ToManagerLogin;
+        private PictureBox BackgroundEmployeeMenu;
     }
 }

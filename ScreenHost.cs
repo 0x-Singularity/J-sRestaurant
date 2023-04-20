@@ -22,7 +22,7 @@ namespace Sprint_2_Group_1_1
         private Manager CurrentManager;
         private EmployeeLoginScreen EmployeeLogin;
         private MenuForEmployee EmployeeMenu;
-        private DiningRoom KitchenOrderDisplay;
+        private DiningRoom DiningRoomDisplay;
 
         //Constructor
         internal ScreenHost()
@@ -35,7 +35,7 @@ namespace Sprint_2_Group_1_1
             CurrentManager = Dave;
             EmployeeLogin = new EmployeeLoginScreen(Dave);
             EmployeeMenu = new MenuForEmployee();
-            KitchenOrderDisplay = new DiningRoom();
+            DiningRoomDisplay = new DiningRoom();
             //End of Temp Code
         }
 
@@ -60,8 +60,8 @@ namespace Sprint_2_Group_1_1
         {
             EmployeeLogin.ScreenPointer(EmployeeMenu);
             EmployeeMenu.ScreenPointer(EmployeeLogin);
-            EmployeeMenu.ScreenPointer2(KitchenOrderDisplay);
-            KitchenOrderDisplay.ScreenPointer(EmployeeMenu);
+            EmployeeMenu.ScreenPointer2(DiningRoomDisplay);
+            DiningRoomDisplay.ScreenPointer(EmployeeMenu);
             //To add a new screen, you need the pointers to the screens that screen interacts with
             //NextScreenToAdd.NSTAScreenPointer1(ScreenToPointTo);
             //ScreenToPointTo.STPTScreenPointerx(NextScreenToAdd);
@@ -69,8 +69,8 @@ namespace Sprint_2_Group_1_1
             DisplayPanel.Controls.Add(EmployeeLogin);
             DisplayPanel.Controls.Add(EmployeeMenu);
             EmployeeMenu.Hide();
-            DisplayPanel.Controls.Add(KitchenOrderDisplay);
-            KitchenOrderDisplay.Hide();
+            DisplayPanel.Controls.Add(DiningRoomDisplay);
+            DiningRoomDisplay.Hide();
 
             //To add a new screen, you need to add it to the panel displayed on ScreenHost
             //DisplayPanel.Controls.Add(NextScreenToAdd);
