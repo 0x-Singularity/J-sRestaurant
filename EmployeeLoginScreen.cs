@@ -126,45 +126,52 @@ namespace Sprint_2_Group_1_1
 
         private void KeypadSubmit_Click(object sender, EventArgs e)
         {
-            if (!KeypadInput.Text.Equals(null))
+            try
             {
-                int TempPass = Convert.ToInt32(KeypadInput.Text);
-                Employee E = CurrentManager.CheckEmployeePasswords(TempPass);
-                if (isLoggedIn)
+                if (!KeypadInput.Text.Equals(null))
                 {
-                    if (TempPass == CurrentEmployee.GetEmployeePassword())
+                    int TempPass = Convert.ToInt32(KeypadInput.Text);
+                    Employee E = CurrentManager.CheckEmployeePasswords(TempPass);
+                    if (isLoggedIn)
                     {
-                        ShowLogoutPanel();
-                        return;
+                        if (TempPass == CurrentEmployee.GetEmployeePassword())
+                        {
+                            ShowLogoutPanel();
+                            return;
+                        }
+                        else
+                        {
+                            Response.Text = "Only one employee can log in at a time.";
+                            KeypadInput.Text = null;
+                        }
+                    }
+                    else if (E != null)
+                    {
+                        Response.Show();
+                        Response.Text = "Hello, " + E.GetEmployeeName() + "!";
+                        isLoggedIn = true;
+                        CurrentEmployee = E;
+                        KeypadInput.Text = null;
+                        if (Pointer != null)
+                        {
+                            ChangeScreensWithPointer();
+                            LoginCurrentEmployee(E);
+                            Pointer.LogInCurrentEmployee(isLoggedIn, CurrentEmployee);
+                        }
                     }
                     else
                     {
-                        Response.Text = "Only one employee can log in at a time.";
-                        KeypadInput.Text = null;
+                        Response.Show();
+                        Response.Text = "Invalid Password, Please Try Again.";
+                        isLoggedIn = false;
                     }
                 }
-                else if (E != null)
-                {
-                    Response.Show();
-                    Response.Text = "Hello, " + E.GetEmployeeName() + "!";
-                    isLoggedIn = true;
-                    CurrentEmployee = E;
-                    KeypadInput.Text = null;
-                    if (Pointer != null)
-                    {
-                        ChangeScreensWithPointer();
-                        LoginCurrentEmployee(E);
-                        Pointer.LogInCurrentEmployee(isLoggedIn, CurrentEmployee);
-                    }
-                }
-                else
-                {
-                    Response.Show();
-                    Response.Text = "Invalid Password, Please Try Again.";
-                    isLoggedIn = false;
-                }
+                else Response.Hide();
             }
-            else Response.Hide(); 
+            catch (Exception E)
+            {
+                Response.Text = "Error: " + E.Message;
+            }
         }
 
         public void ScreenPointer(MenuForEmployee Pointer)

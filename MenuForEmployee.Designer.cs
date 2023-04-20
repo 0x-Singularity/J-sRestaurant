@@ -29,29 +29,30 @@
         private void InitializeComponent()
         {
             this.Login = new System.Windows.Forms.Button();
-            this.Orders = new System.Windows.Forms.Button();
+            this.DiningFloor = new System.Windows.Forms.Button();
             this.ShowCurrentEmployee = new System.Windows.Forms.Label();
+            this.ToMainMenu = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Login
             // 
-            this.Login.Location = new System.Drawing.Point(772, 123);
+            this.Login.Location = new System.Drawing.Point(651, 96);
             this.Login.Name = "Login";
-            this.Login.Size = new System.Drawing.Size(94, 29);
+            this.Login.Size = new System.Drawing.Size(120, 120);
             this.Login.TabIndex = 0;
             this.Login.Text = "Login";
             this.Login.UseVisualStyleBackColor = true;
             this.Login.Click += new System.EventHandler(this.Login_Click);
             // 
-            // Orders
+            // DiningFloor
             // 
-            this.Orders.Location = new System.Drawing.Point(769, 201);
-            this.Orders.Name = "Orders";
-            this.Orders.Size = new System.Drawing.Size(94, 29);
-            this.Orders.TabIndex = 1;
-            this.Orders.Text = "Orders";
-            this.Orders.UseVisualStyleBackColor = true;
-            this.Orders.Click += new System.EventHandler(this.Orders_Click);
+            this.DiningFloor.Location = new System.Drawing.Point(815, 96);
+            this.DiningFloor.Name = "DiningFloor";
+            this.DiningFloor.Size = new System.Drawing.Size(120, 120);
+            this.DiningFloor.TabIndex = 1;
+            this.DiningFloor.Text = "Dining Room";
+            this.DiningFloor.UseVisualStyleBackColor = true;
+            this.DiningFloor.Click += new System.EventHandler(this.Orders_Click);
             // 
             // ShowCurrentEmployee
             // 
@@ -62,12 +63,23 @@
             this.ShowCurrentEmployee.Text = "Current Employee:";
             this.ShowCurrentEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // ToMainMenu
+            // 
+            this.ToMainMenu.Location = new System.Drawing.Point(651, 253);
+            this.ToMainMenu.Name = "ToMainMenu";
+            this.ToMainMenu.Size = new System.Drawing.Size(120, 120);
+            this.ToMainMenu.TabIndex = 3;
+            this.ToMainMenu.Text = "button1";
+            this.ToMainMenu.UseVisualStyleBackColor = true;
+            // 
             // MenuForEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Controls.Add(this.ToMainMenu);
             this.Controls.Add(this.ShowCurrentEmployee);
-            this.Controls.Add(this.Orders);
+            this.Controls.Add(this.DiningFloor);
             this.Controls.Add(this.Login);
             this.Name = "MenuForEmployee";
             this.Size = new System.Drawing.Size(1080, 520);
@@ -78,7 +90,8 @@
         #endregion
 
         private Button Login;
-        private Button Orders;
+        private Button DiningFloor;
         private Label ShowCurrentEmployee;
+        private Button ToMainMenu;
     }
 }
