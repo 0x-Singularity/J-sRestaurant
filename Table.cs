@@ -7,10 +7,9 @@ namespace Sprint_2_Group_1_1
     {
         private static int TableNumber = 1;
         private int TableID;
-        private string CurrentStatus = "";
+        private string CurrentStatus;
         private Order CurrentOrder;
         private OrderingSystem OrderSystem;
-        bool StatusUpdate = false; //If StatusUpdate = true, the status is being changed.
         public Table(OrderingSystem OrderSystem)
         {
             CurrentStatus = "Clean";

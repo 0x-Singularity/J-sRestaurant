@@ -22,7 +22,7 @@ namespace Sprint_2_Group_1_1
         private Manager CurrentManager;
         private EmployeeLoginScreen EmployeeLogin;
         private MenuForEmployee EmployeeMenu;
-        private OrderDisplay KitchenOrderDisplay;
+        private DiningRoom KitchenOrderDisplay;
 
         //Constructor
         internal ScreenHost()
@@ -35,7 +35,7 @@ namespace Sprint_2_Group_1_1
             CurrentManager = Dave;
             EmployeeLogin = new EmployeeLoginScreen(Dave);
             EmployeeMenu = new MenuForEmployee();
-            KitchenOrderDisplay = new OrderDisplay();
+            KitchenOrderDisplay = new DiningRoom();
             //End of Temp Code
         }
 

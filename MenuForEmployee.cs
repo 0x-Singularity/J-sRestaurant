@@ -16,7 +16,7 @@ namespace Sprint_2_GUI_Group1_1
         private Employee CurrentEmployee;
         private bool isLoggedIn;
         private UserControl EmployeeLogin;
-        private UserControl KitchenOrderDisplay;
+        private UserControl OrderHistoryDisplay;
         private UserControl Screen3;
         public MenuForEmployee()
         {
@@ -32,7 +32,7 @@ namespace Sprint_2_GUI_Group1_1
         {
             this.CurrentEmployee = CurrentEmployee;
             ShowCurrentEmployee.Text = "Current Employee: " + CurrentEmployee.GetEmployeeName();
-
+            isLoggedIn = true;
         }
         internal void ScreenPointer(UserControl UserControlToPointTo)
         {
@@ -40,7 +40,7 @@ namespace Sprint_2_GUI_Group1_1
         }
         internal void ScreenPointer2(UserControl UserControlToPointTo)
         {
-            KitchenOrderDisplay = UserControlToPointTo;
+            OrderHistoryDisplay = UserControlToPointTo;
         }
         internal void ScreenPointer3(UserControl UserControlToPointTo)
         {
@@ -50,7 +50,7 @@ namespace Sprint_2_GUI_Group1_1
         private void Orders_Click(object sender, EventArgs e)
         {
             Hide();
-            KitchenOrderDisplay.Show();
+            OrderHistoryDisplay.Show();
         }
     }
 }

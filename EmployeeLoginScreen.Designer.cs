@@ -255,6 +255,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.Controls.Add(this.GoBackToMenu);
             this.Controls.Add(this.InFrontBackgroundPanel);
             this.Controls.Add(this.Response);
