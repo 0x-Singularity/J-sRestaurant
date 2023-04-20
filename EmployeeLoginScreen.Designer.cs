@@ -48,13 +48,15 @@
             this.NoLogout = new System.Windows.Forms.Button();
             this.YesLogout = new System.Windows.Forms.Button();
             this.GoBackToMenu = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.InFrontBackgroundPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // KeypadInput
             // 
             this.KeypadInput.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.KeypadInput.Location = new System.Drawing.Point(415, 130);
+            this.KeypadInput.Location = new System.Drawing.Point(515, 217);
             this.KeypadInput.Name = "KeypadInput";
             this.KeypadInput.Size = new System.Drawing.Size(150, 34);
             this.KeypadInput.TabIndex = 0;
@@ -62,7 +64,7 @@
             // 
             // Keypad1
             // 
-            this.Keypad1.Location = new System.Drawing.Point(445, 190);
+            this.Keypad1.Location = new System.Drawing.Point(545, 277);
             this.Keypad1.Name = "Keypad1";
             this.Keypad1.Size = new System.Drawing.Size(50, 50);
             this.Keypad1.TabIndex = 1;
@@ -72,7 +74,7 @@
             // 
             // Keypad2
             // 
-            this.Keypad2.Location = new System.Drawing.Point(515, 190);
+            this.Keypad2.Location = new System.Drawing.Point(615, 277);
             this.Keypad2.Name = "Keypad2";
             this.Keypad2.Size = new System.Drawing.Size(50, 50);
             this.Keypad2.TabIndex = 2;
@@ -82,7 +84,7 @@
             // 
             // Keypad3
             // 
-            this.Keypad3.Location = new System.Drawing.Point(585, 190);
+            this.Keypad3.Location = new System.Drawing.Point(685, 277);
             this.Keypad3.Name = "Keypad3";
             this.Keypad3.Size = new System.Drawing.Size(50, 50);
             this.Keypad3.TabIndex = 3;
@@ -92,7 +94,7 @@
             // 
             // Keypad4
             // 
-            this.Keypad4.Location = new System.Drawing.Point(445, 260);
+            this.Keypad4.Location = new System.Drawing.Point(545, 347);
             this.Keypad4.Name = "Keypad4";
             this.Keypad4.Size = new System.Drawing.Size(50, 50);
             this.Keypad4.TabIndex = 4;
@@ -102,7 +104,7 @@
             // 
             // Keypad5
             // 
-            this.Keypad5.Location = new System.Drawing.Point(515, 260);
+            this.Keypad5.Location = new System.Drawing.Point(615, 347);
             this.Keypad5.Name = "Keypad5";
             this.Keypad5.Size = new System.Drawing.Size(50, 50);
             this.Keypad5.TabIndex = 5;
@@ -112,7 +114,7 @@
             // 
             // Keypad6
             // 
-            this.Keypad6.Location = new System.Drawing.Point(585, 260);
+            this.Keypad6.Location = new System.Drawing.Point(685, 347);
             this.Keypad6.Name = "Keypad6";
             this.Keypad6.Size = new System.Drawing.Size(50, 50);
             this.Keypad6.TabIndex = 6;
@@ -122,7 +124,7 @@
             // 
             // Keypad7
             // 
-            this.Keypad7.Location = new System.Drawing.Point(445, 330);
+            this.Keypad7.Location = new System.Drawing.Point(545, 417);
             this.Keypad7.Name = "Keypad7";
             this.Keypad7.Size = new System.Drawing.Size(50, 50);
             this.Keypad7.TabIndex = 7;
@@ -132,7 +134,7 @@
             // 
             // Keypad8
             // 
-            this.Keypad8.Location = new System.Drawing.Point(515, 330);
+            this.Keypad8.Location = new System.Drawing.Point(615, 417);
             this.Keypad8.Name = "Keypad8";
             this.Keypad8.Size = new System.Drawing.Size(50, 50);
             this.Keypad8.TabIndex = 8;
@@ -142,7 +144,7 @@
             // 
             // Keypad9
             // 
-            this.Keypad9.Location = new System.Drawing.Point(585, 330);
+            this.Keypad9.Location = new System.Drawing.Point(685, 417);
             this.Keypad9.Name = "Keypad9";
             this.Keypad9.Size = new System.Drawing.Size(50, 50);
             this.Keypad9.TabIndex = 9;
@@ -152,7 +154,7 @@
             // 
             // Keypad0
             // 
-            this.Keypad0.Location = new System.Drawing.Point(515, 400);
+            this.Keypad0.Location = new System.Drawing.Point(615, 487);
             this.Keypad0.Name = "Keypad0";
             this.Keypad0.Size = new System.Drawing.Size(50, 50);
             this.Keypad0.TabIndex = 10;
@@ -162,7 +164,7 @@
             // 
             // KeypadSubmit
             // 
-            this.KeypadSubmit.Location = new System.Drawing.Point(495, 456);
+            this.KeypadSubmit.Location = new System.Drawing.Point(595, 543);
             this.KeypadSubmit.Name = "KeypadSubmit";
             this.KeypadSubmit.Size = new System.Drawing.Size(90, 50);
             this.KeypadSubmit.TabIndex = 11;
@@ -172,7 +174,7 @@
             // 
             // KeypadBackspace
             // 
-            this.KeypadBackspace.Location = new System.Drawing.Point(575, 130);
+            this.KeypadBackspace.Location = new System.Drawing.Point(675, 217);
             this.KeypadBackspace.Name = "KeypadBackspace";
             this.KeypadBackspace.Size = new System.Drawing.Size(90, 40);
             this.KeypadBackspace.TabIndex = 12;
@@ -185,7 +187,7 @@
             this.EmployeeLoginTitle.BackColor = System.Drawing.SystemColors.ControlDark;
             this.EmployeeLoginTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.EmployeeLoginTitle.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.EmployeeLoginTitle.Location = new System.Drawing.Point(415, 40);
+            this.EmployeeLoginTitle.Location = new System.Drawing.Point(515, 127);
             this.EmployeeLoginTitle.Name = "EmployeeLoginTitle";
             this.EmployeeLoginTitle.Size = new System.Drawing.Size(250, 50);
             this.EmployeeLoginTitle.TabIndex = 13;
@@ -196,7 +198,7 @@
             // 
             this.Response.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.Response.BackColor = System.Drawing.SystemColors.Control;
-            this.Response.Location = new System.Drawing.Point(400, 97);
+            this.Response.Location = new System.Drawing.Point(500, 184);
             this.Response.Name = "Response";
             this.Response.Size = new System.Drawing.Size(280, 30);
             this.Response.TabIndex = 14;
@@ -207,7 +209,7 @@
             this.InFrontBackgroundPanel.Controls.Add(this.AreYouSure);
             this.InFrontBackgroundPanel.Controls.Add(this.NoLogout);
             this.InFrontBackgroundPanel.Controls.Add(this.YesLogout);
-            this.InFrontBackgroundPanel.Location = new System.Drawing.Point(415, 190);
+            this.InFrontBackgroundPanel.Location = new System.Drawing.Point(515, 277);
             this.InFrontBackgroundPanel.Name = "InFrontBackgroundPanel";
             this.InFrontBackgroundPanel.Size = new System.Drawing.Size(250, 200);
             this.InFrontBackgroundPanel.TabIndex = 15;
@@ -243,13 +245,23 @@
             // 
             // GoBackToMenu
             // 
-            this.GoBackToMenu.Location = new System.Drawing.Point(591, 456);
+            this.GoBackToMenu.Location = new System.Drawing.Point(691, 543);
             this.GoBackToMenu.Name = "GoBackToMenu";
             this.GoBackToMenu.Size = new System.Drawing.Size(94, 50);
             this.GoBackToMenu.TabIndex = 16;
             this.GoBackToMenu.Text = "Menu";
             this.GoBackToMenu.UseVisualStyleBackColor = true;
             this.GoBackToMenu.Click += new System.EventHandler(this.GoBackToMenu_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Sprint_2_GUI_Group1_1.Properties.Resources.BlackWavesResized;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(1280, 722);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 17;
+            this.pictureBox1.TabStop = false;
             // 
             // EmployeeLoginScreen
             // 
@@ -273,9 +285,11 @@
             this.Controls.Add(this.Keypad2);
             this.Controls.Add(this.Keypad1);
             this.Controls.Add(this.KeypadInput);
+            this.Controls.Add(this.pictureBox1);
             this.Name = "EmployeeLoginScreen";
-            this.Size = new System.Drawing.Size(1080, 520);
+            this.Size = new System.Drawing.Size(1280, 720);
             this.InFrontBackgroundPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,5 +317,6 @@
         private Button NoLogout;
         private Button YesLogout;
         private Button GoBackToMenu;
+        private PictureBox pictureBox1;
     }
 }
