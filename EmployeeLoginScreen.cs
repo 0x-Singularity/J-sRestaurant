@@ -9,14 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sprint_2_Group_1_1
+namespace Sprint_2_GUI_Group1_1
 {
     public partial class EmployeeLoginScreen : UserControl
     {
         private Manager CurrentManager;
         private Employee CurrentEmployee;
         private bool isLoggedIn;
-        private MenuForEmployee Pointer;
+        private MenuForEmployee EmployeeMenu;
         internal EmployeeLoginScreen(Manager CurrentManager)
         {
             InitializeComponent();
@@ -152,11 +152,11 @@ namespace Sprint_2_Group_1_1
                         isLoggedIn = true;
                         CurrentEmployee = E;
                         KeypadInput.Text = null;
-                        if (Pointer != null)
+                        if (EmployeeMenu != null)
                         {
                             ChangeScreensWithPointer();
-                            LoginCurrentEmployee(E);
-                            Pointer.LogInCurrentEmployee(isLoggedIn, CurrentEmployee);
+                            LoginCurrentEmployee((FloorStaff) E);
+                            EmployeeMenu.LogInCurrentEmployee(isLoggedIn, (FloorStaff) CurrentEmployee);
                         }
                     }
                     else
@@ -176,13 +176,13 @@ namespace Sprint_2_Group_1_1
 
         public void ScreenPointer(MenuForEmployee Pointer)
         {
-            this.Pointer = Pointer;
+            this.EmployeeMenu = Pointer;
         }
 
         internal void ChangeScreensWithPointer()
         {
             Hide();
-            Pointer.Show();
+            EmployeeMenu.Show();
         }
 
         private void YesLogout_Click(object sender, EventArgs e)
@@ -200,7 +200,7 @@ namespace Sprint_2_Group_1_1
             KeypadInput.Text = null;
         }
 
-        private void LoginCurrentEmployee(Employee CurrentEmployee)
+        private void LoginCurrentEmployee(FloorStaff CurrentEmployee)
         {
             GoBackToMenu.Show();
             this.CurrentEmployee = CurrentEmployee;

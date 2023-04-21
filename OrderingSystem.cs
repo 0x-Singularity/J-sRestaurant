@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Sprint_2_Group_1_1
+namespace Sprint_2_GUI_Group1_1
 {
-    internal class OrderingSystem
+    //Might not be a necessary class
+    /*internal class OrderingSystem
     {
         private List<Order> OrderList = new List<Order>();
         public void NewOrder()
@@ -70,5 +71,5 @@ namespace Sprint_2_Group_1_1
             }
             throw new Exception("Error: Order not contained in list.");
         }
-    }
+    }*/
 }

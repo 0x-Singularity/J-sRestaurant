@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Sprint_2_Group_1_1
+namespace Sprint_2_GUI_Group1_1
 {
     internal class Waiter : FloorStaff
     {

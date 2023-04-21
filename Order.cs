@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Sprint_2_Group_1_1
+namespace Sprint_2_GUI_Group1_1
 {
     internal class Order
     {
@@ -25,6 +25,28 @@ namespace Sprint_2_Group_1_1
         {
             Menu menu = new Menu();
             OrderItems.Add(menu.FindItem(ItemID));
+        }
+        public void RemoveItemFromOrder(Item ItemToRemove)
+        {
+            if (FindItemInOrder(ItemToRemove) != null)
+            {
+                OrderItems.Remove(ItemToRemove);
+            }
+            else
+            {
+                throw new Exception("Item not contained in order.");
+            }
+        }
+        public Item FindItemInOrder(Item I)
+        {
+            foreach (Item i in OrderItems)
+            {
+                if (i == I)
+                {
+                    return i;
+                }
+            }
+            return null;
         }
         public void ChangeOrderStatus()
         {

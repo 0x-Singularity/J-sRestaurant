@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security;
 
-namespace Sprint_2_Group_1_1
+namespace Sprint_2_GUI_Group1_1
 {
     internal class Item
     {
@@ -19,16 +20,25 @@ namespace Sprint_2_Group_1_1
             this.Customizable = Customizable;
             this.Category = Category;
         }
-        public void Customize()
+        public bool isCustomizable()
         {
-            if (Customizable)
-            {
-                //show customization menu
-            }
-            else
-            {
-                throw new Exception("Cannot customize this item");
-            }
+            return Customizable;
+        }
+        public int GetItemID()
+        {
+            return ItemID;
+        }
+        public string GetCategory()
+        {
+            return Category;
+        }
+        public float GetCost()
+        {
+            return Cost;
+        }
+        public string GetName()
+        {
+            return Name;
         }
     }
 }

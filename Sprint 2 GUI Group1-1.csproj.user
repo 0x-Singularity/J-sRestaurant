@@ -16,5 +16,8 @@
     <Compile Update="MenuForEmployee.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="OrderOverview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
