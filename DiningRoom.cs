@@ -15,7 +15,7 @@ namespace Sprint_2_GUI_Group1_1
         private MenuForEmployee MainMenu;
         private OrderOverview OrderOverview;
         private FloorStaff CurrentEmployee;
-        private Table[] ListOfAssignedTables;
+        private string[] ListOfAssignedTables;
         private Table[] AllTables = new Table[28];
         private Button[] TableButtons = new Button[28];
         public DiningRoom()
@@ -23,79 +23,6 @@ namespace Sprint_2_GUI_Group1_1
             InitializeComponent();
             FillAllTablesAndButtons();
         }
-        private void FillAllTablesAndButtons()
-        {
-            AllTables[0] = new Table("Clean", "Table1A");
-            AllTables[1] = new Table("Clean", "Table2A");
-            AllTables[2] = new Table("Clean", "Table3A");
-            AllTables[3] = new Table("Clean", "Table4A");
-            AllTables[4] = new Table("Clean", "Table5A");
-            AllTables[5] = new Table("Clean", "Table6A");
-            AllTables[6] = new Table("Clean", "Table1B");
-            AllTables[7] = new Table("Clean", "Table2B");
-            AllTables[8] = new Table("Clean", "Table3B");  
-            AllTables[9] = new Table("Clean", "Table4B");
-            AllTables[10] = new Table("Clean", "Table5B");
-            AllTables[11] = new Table("Clean", "Table6B");
-            AllTables[12] = new Table("Clean", "Table5C");
-            AllTables[13] = new Table("Clean", "Table6C");
-            AllTables[14] = new Table("Clean", "Table5D");
-            AllTables[15] = new Table("Clean", "Table6D");
-            AllTables[16] = new Table("Clean", "Table1E");
-            AllTables[17] = new Table("Clean", "Table2E");
-            AllTables[18] = new Table("Clean", "Table3E");
-            AllTables[19] = new Table("Clean", "Table4E");
-            AllTables[20] = new Table("Clean", "Table5E");
-            AllTables[21] = new Table("Clean", "Table6E");
-            AllTables[22] = new Table("Clean", "Table1F");
-            AllTables[23] = new Table("Clean", "Table2F");
-            AllTables[24] = new Table("Clean", "Table3F");
-            AllTables[25] = new Table("Clean", "Table4F");
-            AllTables[26] = new Table("Clean", "Table5F");
-            AllTables[27] = new Table("Clean", "Table6F");
-            TableButtons[0] = TableA1;
-            TableButtons[1] = TableA2;
-            TableButtons[2] = TableA3;
-            TableButtons[3] = TableA4;
-            TableButtons[4] = TableA5;
-            TableButtons[5] = TableA6;
-            TableButtons[6] = TableB1;
-            TableButtons[7] = TableB2;
-            TableButtons[8] = TableB3;
-            TableButtons[9] = TableB4;
-            TableButtons[10] = TableB5;
-            TableButtons[11] = TableB6;
-            TableButtons[12] = TableC5;
-            TableButtons[13] = TableC6;
-            TableButtons[14] = TableD5;
-            TableButtons[15] = TableD6;
-            TableButtons[16] = TableE2;
-            TableButtons[17] = TableE2;
-            TableButtons[18] = TableE3;
-            TableButtons[19] = TableE4;
-            TableButtons[20] = TableE5;
-            TableButtons[21] = TableE6;
-            TableButtons[22] = TableF1;
-            TableButtons[23] = TableF2;
-            TableButtons[24] = TableF3;
-            TableButtons[25] = TableF4;
-            TableButtons[26] = TableF5;
-            TableButtons[27] = TableF6;
-        }
-
-        internal void SetEmployee(FloorStaff NewEmployee)
-        {
-            CurrentEmployee = NewEmployee;
-            ListOfAssignedTables = CurrentEmployee.GetAssignedTables();
-            //GreyOutUnassignedTables();
-        }
-
-        private void BackToMenu_Click(object sender, EventArgs e)
-        {
-            Hide();
-            MainMenu.Show();
-        }
-
         internal void ScreenPointer(MenuForEmployee Screen)
         {
             MainMenu = Screen;
@@ -104,339 +31,137 @@ namespace Sprint_2_GUI_Group1_1
         internal void ScreenPointer2(OrderOverview OrderOverview)
         {
             this.OrderOverview = OrderOverview;
+            this.OrderOverview.SetCurrentEmployee(CurrentEmployee);
+        }
+        private void FillAllTablesAndButtons()
+        {
+            int Counter = -1;
+            string Table = "Table";
+            for (int y = 1; y <= 6; y++)
+            {
+                string Temp = Table + y;
+                string Tempy = Temp;
+                for (int x = 1; x <= 6; x++)
+                {
+                    switch (x)
+                    {
+                        case 1:
+                            Temp += "A";
+                            Counter++;
+                            break;
+                        case 2:
+                            Temp += "B";
+                            Counter++;
+                            break;
+                        case 3:
+                            if (y < 5) continue;
+                            Temp += "C";
+                            Counter++;
+                            break;
+                        case 4:
+                            if (y < 5) continue;
+                            Temp += "D";
+                            Counter++;
+                            break;
+                        case 5:
+                            Temp += "E";
+                            Counter++;
+                            break;
+                        case 6:
+                            Temp += "F";
+                            Counter++;
+                            break;
+                    }
+                    AllTables[Counter] = new Table("Clean", Temp);
+                    Temp = Tempy;
+                }
+            }
+            TableButtons[0] = TableA1;
+            TableButtons[1] = TableB1;
+            TableButtons[2] = TableE1;
+            TableButtons[3] = TableF1;
+            TableButtons[4] = TableA2;
+            TableButtons[5] = TableB2;
+            TableButtons[6] = TableE2;
+            TableButtons[7] = TableF2;
+            TableButtons[8] = TableA3;
+            TableButtons[9] = TableB3;
+            TableButtons[10] = TableE3;
+            TableButtons[11] = TableF3;
+            TableButtons[12] = TableA4;
+            TableButtons[13] = TableB4;
+            TableButtons[14] = TableE4;
+            TableButtons[15] = TableF4;
+            TableButtons[16] = TableA5;
+            TableButtons[17] = TableB5;
+            TableButtons[18] = TableC5;
+            TableButtons[19] = TableD5;
+            TableButtons[20] = TableE5;
+            TableButtons[21] = TableF5;
+            TableButtons[22] = TableA6;
+            TableButtons[23] = TableB6;
+            TableButtons[24] = TableC6;
+            TableButtons[25] = TableD6;
+            TableButtons[26] = TableE6;
+            TableButtons[27] = TableF6;
         }
 
-        private bool ContainedInAssignedTables(string TableIDToCheck)
+        internal void SetEmployee(FloorStaff NewEmployee)
+        {
+            CurrentEmployee = NewEmployee;
+            ListOfAssignedTables = CurrentEmployee.GetAssignedTables();
+            GreyOutUnassignedTables();
+        }
+
+
+        //Find a table in assigned tables using a TableID
+        private bool ContainedInAssignedTables(string TableYX)
         {
             for (int i = 0; i < ListOfAssignedTables.Length; i++)
             {
-                if (TableIDToCheck == ListOfAssignedTables[i].GetTableID())
+                if (TableYX.Equals(ListOfAssignedTables[i]))
                 {
                     return true;
                 }
             }
             return false;
         }
-
         private void GreyOutUnassignedTables()
         {
-            if (!ContainedInAssignedTables("Table1A"))
+            for (int i = 0; i < AllTables.Length; i++)
             {
-                TableA1.BackColor = Color.DarkGray;
+                if (!ContainedInAssignedTables(AllTables[i].GetTableID()))
+                {
+                    TableButtons[i].BackColor = Color.DarkGray;
+                    TableButtons[i].Enabled = false;
+                }
             }
-            if (!ContainedInAssignedTables("Table2A"))
-            {
-                TableA2.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table3A"))
-            {
-                TableA3.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table4A"))
-            {
-                TableA4.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table5A"))
-            {
-                TableA5.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table6A"))
-            {
-                TableA6.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table1B"))
-            {
-                TableB1.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table2B"))
-            {
-                TableB2.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table3B"))
-            {
-                TableB3.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table4B"))
-            {
-                TableB4.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table5B"))
-            {
-                TableB5.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table6B"))
-            {
-                TableB6.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table5C"))
-            {
-                TableC5.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table6C"))
-            {
-                TableC6.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table5D"))
-            {
-                TableD5.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table6D"))
-            {
-                TableD6.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table1E"))
-            {
-                TableE1.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table2E"))
-            {
-                TableE2.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table3E"))
-            {
-                TableE3.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table4E"))
-            {
-                TableE4.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table5E"))
-            {
-                TableE5.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table6E"))
-            {
-                TableE6.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table1F"))
-            {
-                TableF1.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table2F"))
-            {
-                TableF2.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table3F"))
-            {
-                TableF3.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table4F"))
-            {
-                TableF4.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table5F"))
-            {
-                TableF5.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table6F"))
-            {
-                TableF6.BackColor = Color.DarkGray;
-            }
-            ShowActiveTableStatuses();
+            ShowActiveStatusTables();
         }
-        private void ShowActiveTableStatuses()
+        private void ShowActiveStatusTables()
         {
-            if (!ContainedInAssignedTables("Table1A"))
+            for (int i = 0; i < AllTables.Length; i++)
             {
-                TableA1.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table2A"))
-            {
-                TableA2.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table3A"))
-            {
-                TableA3.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table4A"))
-            {
-                TableA4.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table5A"))
-            {
-                TableA5.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table6A"))
-            {
-                TableA6.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table1B"))
-            {
-                TableB1.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table2B"))
-            {
-                TableB2.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table3B"))
-            {
-                TableB3.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table4B"))
-            {
-                TableB4.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table5B"))
-            {
-                TableB5.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table6B"))
-            {
-                TableB6.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table5C"))
-            {
-                TableC5.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table6C"))
-            {
-                TableC6.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table5D"))
-            {
-                TableD5.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table6D"))
-            {
-                TableD6.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table1E"))
-            {
-                TableE1.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table2E"))
-            {
-                TableE2.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table3E"))
-            {
-                TableE3.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table4E"))
-            {
-                TableE4.BackColor = Color.DarkGray;
-            }
-            if (!ContainedInAssignedTables("Table5E"))
-            {
-                if (AllTables[20].GetCurrentStatus() == "Clean")
+                if (ContainedInAssignedTables(AllTables[i].GetTableID()))
                 {
-                    TableE5.BackColor = Color.LimeGreen;
-                }
-                else if (AllTables[20].GetCurrentStatus() == "Occupied")
-                {
-                    TableE5.BackColor = Color.Yellow;
-                }
-                else
-                {
-                    TableE5.BackColor = Color.Red;
-                }
-            }
-            if (!ContainedInAssignedTables("Table6E"))
-            {
-                if (AllTables[21].GetCurrentStatus() == "Clean")
-                {
-                    TableE6.BackColor = Color.LimeGreen;
-                }
-                else if (AllTables[21].GetCurrentStatus() == "Occupied")
-                {
-                    TableE6.BackColor = Color.Yellow;
-                }
-                else
-                {
-                    TableE6.BackColor = Color.Red;
-                }
-            }
-            if (!ContainedInAssignedTables("Table1F"))
-            {
-                if (AllTables[22].GetCurrentStatus() == "Clean")
-                {
-                    TableF1.BackColor = Color.LimeGreen;
-                }
-                else if (AllTables[22].GetCurrentStatus() == "Occupied")
-                {
-                    TableF1.BackColor = Color.Yellow;
-                }
-                else
-                {
-                    TableF1.BackColor = Color.Red;
-                }
-            }
-            if (!ContainedInAssignedTables("Table2F"))
-            {
-                if (AllTables[23].GetCurrentStatus() == "Clean")
-                {
-                    TableF2.BackColor = Color.LimeGreen;
-                }
-                else if (AllTables[23].GetCurrentStatus() == "Occupied")
-                {
-                    TableF2.BackColor = Color.Yellow;
-                }
-                else
-                {
-                    TableF5.BackColor = Color.Red;
-                }
-            }
-            if (!ContainedInAssignedTables("Table3F"))
-            {
-                if (AllTables[24].GetCurrentStatus() == "Clean")
-                {
-                    TableF3.BackColor = Color.LimeGreen;
-                }
-                else if (AllTables[24].GetCurrentStatus() == "Occupied")
-                {
-                    TableF3.BackColor = Color.Yellow;
-                }
-                else
-                {
-                    TableF3.BackColor = Color.Red;
-                }
-            }
-            if (ContainedInAssignedTables("Table4F"))
-            {
-                if (AllTables[25].GetCurrentStatus() == "Clean")
-                {
-                    TableF4.BackColor = Color.LimeGreen;
-                }
-                else if (AllTables[25].GetCurrentStatus() == "Occupied")
-                {
-                    TableF4.BackColor = Color.Yellow;
-                }
-                else
-                {
-                    TableF4.BackColor = Color.Red;
-                }
-            }
-            if (ContainedInAssignedTables("Table5F"))
-            {
-                if (AllTables[26].GetCurrentStatus() == "Clean")
-                {
-                    TableF5.BackColor = Color.LimeGreen;
-                }
-                else if (AllTables[26].GetCurrentStatus() == "Occupied")
-                {
-                    TableF5.BackColor = Color.Yellow;
-                }
-                else
-                {
-                    TableF5.BackColor = Color.Red;
-                }
-            }
-            if (ContainedInAssignedTables("Table6F"))
-            {
-                if (AllTables[27].GetCurrentStatus() == "Clean")
-                {
-                    TableF6.BackColor = Color.LimeGreen;
-                }
-                else if (AllTables[27].GetCurrentStatus() == "Occupied")
-                {
-                    TableF6.BackColor = Color.Yellow;
-                }
-                else
-                {
-                    TableF6.BackColor = Color.Red;
+                    switch (AllTables[i].GetCurrentStatus())
+                    {
+                        case "Clean":
+                            TableButtons[i].BackColor = Color.Green;
+                            break;
+                        case "Occupied":
+                            TableButtons[i].BackColor = Color.Yellow;
+                            break;
+                        case "Needs Attention":
+                            TableButtons[i].BackColor = Color.Red;
+                            break;
+                    }
+                    TableButtons[i].Enabled = true;
                 }
             }
         }
+
+        // GUI Button Methods Contained Below
         private void TableA1_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table1A"))
@@ -743,6 +468,11 @@ namespace Sprint_2_GUI_Group1_1
                 OrderOverview.SetCurrentEmployee(CurrentEmployee);
                 OrderOverview.SetTable(AllTables[27]);
             }
+        }
+        private void BackToMenu_Click(object sender, EventArgs e)
+        {
+            Hide();
+            MainMenu.Show();
         }
     }
 }

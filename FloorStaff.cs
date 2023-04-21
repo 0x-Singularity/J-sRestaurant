@@ -8,9 +8,9 @@ namespace Sprint_2_GUI_Group1_1
 {
     internal abstract class FloorStaff : Employee
     {
-        protected Table[] TablesAssigned = new Table[28];
+        protected string[] TablesAssigned = new string[28];
         public FloorStaff(string Name, int Password) : base (Name, Password) { }
-        public bool AssignTables(bool ManagerLoggedIn, Table[] TablesAssigned) //move method to FloorStaff
+        public bool AssignTables(bool ManagerLoggedIn, string[] TablesAssigned) //move method to FloorStaff
         {
             if (ManagerLoggedIn)
             {
@@ -19,7 +19,7 @@ namespace Sprint_2_GUI_Group1_1
             }
             return false;
         }
-        public Table[] GetAssignedTables()
+        public string[] GetAssignedTables()
         {
             return TablesAssigned;
         }

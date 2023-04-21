@@ -59,7 +59,7 @@
             this.TableE6 = new System.Windows.Forms.Button();
             this.TableF6 = new System.Windows.Forms.Button();
             this.ToBarSeating = new System.Windows.Forms.Button();
-            this.ToOrderDisplay = new System.Windows.Forms.Button();
+            this.ToCurrentOrders = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -98,7 +98,7 @@
             // 
             // TableA1
             // 
-            this.TableA1.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableA1.BackColor = System.Drawing.Color.RosyBrown;
             this.TableA1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableA1.Location = new System.Drawing.Point(400, 120);
             this.TableA1.Name = "TableA1";
@@ -109,7 +109,7 @@
             // 
             // TableB1
             // 
-            this.TableB1.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableB1.BackColor = System.Drawing.Color.RosyBrown;
             this.TableB1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableB1.Location = new System.Drawing.Point(481, 120);
             this.TableB1.Name = "TableB1";
@@ -120,7 +120,7 @@
             // 
             // TableE1
             // 
-            this.TableE1.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableE1.BackColor = System.Drawing.Color.RosyBrown;
             this.TableE1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableE1.Location = new System.Drawing.Point(724, 120);
             this.TableE1.Name = "TableE1";
@@ -131,7 +131,7 @@
             // 
             // TableF1
             // 
-            this.TableF1.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableF1.BackColor = System.Drawing.Color.RosyBrown;
             this.TableF1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableF1.FlatAppearance.BorderSize = 10;
             this.TableF1.Location = new System.Drawing.Point(805, 120);
@@ -143,7 +143,7 @@
             // 
             // TableA2
             // 
-            this.TableA2.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableA2.BackColor = System.Drawing.Color.RosyBrown;
             this.TableA2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableA2.Location = new System.Drawing.Point(400, 201);
             this.TableA2.Name = "TableA2";
@@ -154,7 +154,7 @@
             // 
             // TableB2
             // 
-            this.TableB2.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableB2.BackColor = System.Drawing.Color.RosyBrown;
             this.TableB2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableB2.Location = new System.Drawing.Point(481, 201);
             this.TableB2.Name = "TableB2";
@@ -165,7 +165,7 @@
             // 
             // TableF2
             // 
-            this.TableF2.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableF2.BackColor = System.Drawing.Color.RosyBrown;
             this.TableF2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableF2.Location = new System.Drawing.Point(805, 201);
             this.TableF2.Name = "TableF2";
@@ -176,7 +176,7 @@
             // 
             // TableE2
             // 
-            this.TableE2.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableE2.BackColor = System.Drawing.Color.RosyBrown;
             this.TableE2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableE2.Location = new System.Drawing.Point(724, 201);
             this.TableE2.Name = "TableE2";
@@ -187,7 +187,7 @@
             // 
             // TableA3
             // 
-            this.TableA3.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableA3.BackColor = System.Drawing.Color.RosyBrown;
             this.TableA3.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableA3.Location = new System.Drawing.Point(400, 282);
             this.TableA3.Name = "TableA3";
@@ -198,7 +198,7 @@
             // 
             // TableB3
             // 
-            this.TableB3.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableB3.BackColor = System.Drawing.Color.RosyBrown;
             this.TableB3.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableB3.Location = new System.Drawing.Point(481, 282);
             this.TableB3.Name = "TableB3";
@@ -209,7 +209,7 @@
             // 
             // TableE3
             // 
-            this.TableE3.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableE3.BackColor = System.Drawing.Color.RosyBrown;
             this.TableE3.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableE3.Location = new System.Drawing.Point(724, 282);
             this.TableE3.Name = "TableE3";
@@ -220,7 +220,7 @@
             // 
             // TableF3
             // 
-            this.TableF3.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableF3.BackColor = System.Drawing.Color.RosyBrown;
             this.TableF3.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableF3.Location = new System.Drawing.Point(805, 282);
             this.TableF3.Name = "TableF3";
@@ -231,7 +231,7 @@
             // 
             // TableA4
             // 
-            this.TableA4.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableA4.BackColor = System.Drawing.Color.RosyBrown;
             this.TableA4.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableA4.Location = new System.Drawing.Point(400, 363);
             this.TableA4.Name = "TableA4";
@@ -242,7 +242,7 @@
             // 
             // TableB4
             // 
-            this.TableB4.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableB4.BackColor = System.Drawing.Color.RosyBrown;
             this.TableB4.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableB4.Location = new System.Drawing.Point(481, 363);
             this.TableB4.Name = "TableB4";
@@ -253,7 +253,7 @@
             // 
             // TableE4
             // 
-            this.TableE4.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableE4.BackColor = System.Drawing.Color.RosyBrown;
             this.TableE4.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableE4.Location = new System.Drawing.Point(724, 363);
             this.TableE4.Name = "TableE4";
@@ -264,7 +264,7 @@
             // 
             // TableF4
             // 
-            this.TableF4.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableF4.BackColor = System.Drawing.Color.RosyBrown;
             this.TableF4.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableF4.Location = new System.Drawing.Point(805, 363);
             this.TableF4.Name = "TableF4";
@@ -275,7 +275,7 @@
             // 
             // TableA5
             // 
-            this.TableA5.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableA5.BackColor = System.Drawing.Color.RosyBrown;
             this.TableA5.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableA5.Location = new System.Drawing.Point(400, 444);
             this.TableA5.Name = "TableA5";
@@ -286,7 +286,7 @@
             // 
             // TableB5
             // 
-            this.TableB5.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableB5.BackColor = System.Drawing.Color.RosyBrown;
             this.TableB5.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableB5.Location = new System.Drawing.Point(481, 444);
             this.TableB5.Name = "TableB5";
@@ -297,7 +297,7 @@
             // 
             // TableC5
             // 
-            this.TableC5.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableC5.BackColor = System.Drawing.Color.RosyBrown;
             this.TableC5.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableC5.Location = new System.Drawing.Point(562, 444);
             this.TableC5.Name = "TableC5";
@@ -308,7 +308,7 @@
             // 
             // TableD5
             // 
-            this.TableD5.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableD5.BackColor = System.Drawing.Color.RosyBrown;
             this.TableD5.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableD5.Location = new System.Drawing.Point(643, 444);
             this.TableD5.Name = "TableD5";
@@ -319,7 +319,7 @@
             // 
             // TableE5
             // 
-            this.TableE5.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableE5.BackColor = System.Drawing.Color.RosyBrown;
             this.TableE5.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableE5.Location = new System.Drawing.Point(724, 444);
             this.TableE5.Name = "TableE5";
@@ -330,7 +330,7 @@
             // 
             // TableF5
             // 
-            this.TableF5.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableF5.BackColor = System.Drawing.Color.RosyBrown;
             this.TableF5.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableF5.Location = new System.Drawing.Point(805, 444);
             this.TableF5.Name = "TableF5";
@@ -341,7 +341,7 @@
             // 
             // TableA6
             // 
-            this.TableA6.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableA6.BackColor = System.Drawing.Color.RosyBrown;
             this.TableA6.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableA6.Location = new System.Drawing.Point(400, 525);
             this.TableA6.Name = "TableA6";
@@ -352,7 +352,7 @@
             // 
             // TableB6
             // 
-            this.TableB6.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableB6.BackColor = System.Drawing.Color.RosyBrown;
             this.TableB6.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableB6.Location = new System.Drawing.Point(481, 525);
             this.TableB6.Name = "TableB6";
@@ -363,7 +363,7 @@
             // 
             // TableC6
             // 
-            this.TableC6.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableC6.BackColor = System.Drawing.Color.RosyBrown;
             this.TableC6.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableC6.Location = new System.Drawing.Point(562, 525);
             this.TableC6.Name = "TableC6";
@@ -374,7 +374,7 @@
             // 
             // TableD6
             // 
-            this.TableD6.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableD6.BackColor = System.Drawing.Color.RosyBrown;
             this.TableD6.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableD6.Location = new System.Drawing.Point(643, 525);
             this.TableD6.Name = "TableD6";
@@ -385,7 +385,7 @@
             // 
             // TableE6
             // 
-            this.TableE6.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableE6.BackColor = System.Drawing.Color.RosyBrown;
             this.TableE6.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableE6.Location = new System.Drawing.Point(724, 525);
             this.TableE6.Name = "TableE6";
@@ -396,7 +396,7 @@
             // 
             // TableF6
             // 
-            this.TableF6.BackColor = System.Drawing.Color.LimeGreen;
+            this.TableF6.BackColor = System.Drawing.Color.RosyBrown;
             this.TableF6.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.TableF6.Location = new System.Drawing.Point(805, 525);
             this.TableF6.Name = "TableF6";
@@ -414,14 +414,14 @@
             this.ToBarSeating.Text = "Bar";
             this.ToBarSeating.UseVisualStyleBackColor = true;
             // 
-            // ToOrderDisplay
+            // ToCurrentOrders
             // 
-            this.ToOrderDisplay.Location = new System.Drawing.Point(562, 120);
-            this.ToOrderDisplay.Name = "ToOrderDisplay";
-            this.ToOrderDisplay.Size = new System.Drawing.Size(156, 102);
-            this.ToOrderDisplay.TabIndex = 34;
-            this.ToOrderDisplay.Text = "Current Orders";
-            this.ToOrderDisplay.UseVisualStyleBackColor = true;
+            this.ToCurrentOrders.Location = new System.Drawing.Point(562, 120);
+            this.ToCurrentOrders.Name = "ToCurrentOrders";
+            this.ToCurrentOrders.Size = new System.Drawing.Size(156, 102);
+            this.ToCurrentOrders.TabIndex = 34;
+            this.ToCurrentOrders.Text = "Current Orders";
+            this.ToCurrentOrders.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -573,7 +573,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.ToOrderDisplay);
+            this.Controls.Add(this.ToCurrentOrders);
             this.Controls.Add(this.ToBarSeating);
             this.Controls.Add(this.TableF6);
             this.Controls.Add(this.TableE6);
@@ -645,7 +645,7 @@
         private Button TableE6;
         private Button TableF6;
         private Button ToBarSeating;
-        private Button ToOrderDisplay;
+        private Button ToCurrentOrders;
         private Label label1;
         private Label label2;
         private Label label3;

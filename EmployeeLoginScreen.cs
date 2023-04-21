@@ -126,6 +126,7 @@ namespace Sprint_2_GUI_Group1_1
 
         private void KeypadSubmit_Click(object sender, EventArgs e)
         {
+            //Try-Catch to catch any exceptions and avoid crashing
             try
             {
                 if (!KeypadInput.Text.Equals(null))
@@ -142,7 +143,7 @@ namespace Sprint_2_GUI_Group1_1
                         else
                         {
                             Response.Text = "Only one employee can log in at a time.";
-                            KeypadInput.Text = null;
+                            KeypadInput.Text = "";
                         }
                     }
                     else if (E != null)
@@ -155,8 +156,8 @@ namespace Sprint_2_GUI_Group1_1
                         if (EmployeeMenu != null)
                         {
                             ChangeScreensWithPointer();
-                            LoginCurrentEmployee((FloorStaff) E);
-                            EmployeeMenu.LogInCurrentEmployee(isLoggedIn, (FloorStaff) CurrentEmployee);
+                            LoginCurrentEmployee(E);
+                            EmployeeMenu.LogInCurrentEmployee(isLoggedIn, CurrentEmployee);
                         }
                     }
                     else
@@ -200,7 +201,7 @@ namespace Sprint_2_GUI_Group1_1
             KeypadInput.Text = null;
         }
 
-        private void LoginCurrentEmployee(FloorStaff CurrentEmployee)
+        private void LoginCurrentEmployee(Employee CurrentEmployee)
         {
             GoBackToMenu.Show();
             this.CurrentEmployee = CurrentEmployee;

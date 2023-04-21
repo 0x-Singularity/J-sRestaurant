@@ -13,12 +13,8 @@ namespace Sprint_2_GUI_Group1_1
 {
     public partial class ScreenHost : Form
     {
-        //Temp code?
-        private List<Employee> EmployeeList = new List<Employee>();
-        private List<Table> Tables = new List<Table>();
-        //End of Temp Code
-
         //Attributes
+        private List<Employee> EmployeeList = new List<Employee>();
         private Manager CurrentManager;
         private EmployeeLoginScreen EmployeeLogin;
         private MenuForEmployee EmployeeMenu;
@@ -30,57 +26,72 @@ namespace Sprint_2_GUI_Group1_1
         {
             InitializeComponent();
             //Temp Code
+
+            //Waiter 1
             Waiter W1 = new Waiter("John", 1111);
-            Waiter W2 = new Waiter("Adam", 2222);
-            Waiter W3 = new Waiter("Andrew", 3333);
-            Table[] AssignedTablesW1 = new Table[9];
-            Table[] AssignedTablesW2 = new Table[10];
-            Table[] AssignedTablesW3 = AssignedTablesW1;
-            AssignedTablesW1[0] = new Table("Clean", "Table1A");
-            AssignedTablesW1[1] = new Table("Clean", "Table2A");
-            AssignedTablesW1[2] = new Table("Clean", "Table3A");
-            AssignedTablesW1[3] = new Table("Clean", "Table4A");
-            AssignedTablesW1[4] = new Table("Clean", "Table5A");
-            AssignedTablesW1[5] = new Table("Clean", "Table1B");
-            AssignedTablesW1[6] = new Table("Clean", "Table2B");
-            AssignedTablesW1[7] = new Table("Clean", "Table3B");
-            AssignedTablesW1[8] = new Table("Clean", "Table4B");
-
-            AssignedTablesW2[0] = new Table("Clean", "Table6A");
-            AssignedTablesW2[1] = new Table("Clean", "Table5B");
-            AssignedTablesW2[2] = new Table("Clean", "Table6B");
-            AssignedTablesW2[3] = new Table("Clean", "Table5C");
-            AssignedTablesW2[4] = new Table("Clean", "Table6C");
-            AssignedTablesW2[5] = new Table("Clean", "Table5D");
-            AssignedTablesW2[6] = new Table("Clean", "Table6D");
-            AssignedTablesW2[7] = new Table("Clean", "Table5E");
-            AssignedTablesW2[8] = new Table("Clean", "Table6E");
-            AssignedTablesW2[9] = new Table("Clean", "Table6F");
-
-            AssignedTablesW3[0] = new Table("Clean", "Table1E");
-            AssignedTablesW3[1] = new Table("Clean", "Table2E");
-            AssignedTablesW3[2] = new Table("Clean", "Table3E");
-            AssignedTablesW3[3] = new Table("Clean", "Table4E");
-            AssignedTablesW3[4] = new Table("Clean", "Table1F");
-            AssignedTablesW3[5] = new Table("Clean", "Table2F");
-            AssignedTablesW3[6] = new Table("Clean", "Table3F");
-            AssignedTablesW3[7] = new Table("Clean", "Table4F");
-            AssignedTablesW3[8] = new Table("Clean", "Table5F");
+            string[] AssignedTablesW1 = new string[9];
+            AssignedTablesW1[0] = "Table1A";
+            AssignedTablesW1[1] = "Table2A";
+            AssignedTablesW1[2] = "Table3A";
+            AssignedTablesW1[3] = "Table4A";
+            AssignedTablesW1[4] = "Table5A";
+            AssignedTablesW1[5] = "Table1B";
+            AssignedTablesW1[6] = "Table2B";
+            AssignedTablesW1[7] = "Table3B";
+            AssignedTablesW1[8] = "Table4B";
             W1.AssignTables(true, AssignedTablesW1);
-            W2.AssignTables(true, AssignedTablesW2);
-            W3.AssignTables(true, AssignedTablesW3);
             EmployeeList.Add(W1);
+
+            //Waiter 2
+            Waiter W2 = new Waiter("Adam", 2222);
+            string[] AssignedTablesW2 = new string[10];
+            AssignedTablesW2[0] = "Table6A";
+            AssignedTablesW2[1] = "Table5B";
+            AssignedTablesW2[2] = "Table6B";
+            AssignedTablesW2[3] = "Table5C";
+            AssignedTablesW2[4] = "Table6C";
+            AssignedTablesW2[5] = "Table5D";
+            AssignedTablesW2[6] = "Table6D";
+            AssignedTablesW2[7] = "Table5E";
+            AssignedTablesW2[8] = "Table6E";
+            AssignedTablesW2[9] = "Table6F";
+            W2.AssignTables(true, AssignedTablesW2);
             EmployeeList.Add(W2);
+
+            //Waiter 3
+            Waiter W3 = new Waiter("Andrew", 3333);
+            string[] AssignedTablesW3 = new string[9];
+            AssignedTablesW3[0] = "Table1E";
+            AssignedTablesW3[1] = "Table2E";
+            AssignedTablesW3[2] = "Table3E";
+            AssignedTablesW3[3] = "Table4E";
+            AssignedTablesW3[4] = "Table1F";
+            AssignedTablesW3[5] = "Table2F";
+            AssignedTablesW3[6] = "Table3F";
+            AssignedTablesW3[7] = "Table4F";
+            AssignedTablesW3[8] = "Table5F";
+            W3.AssignTables(true, AssignedTablesW3);
             EmployeeList.Add(W3);
+
+            //Cook 1
+            Cook C1 = new Cook("Mark", 4444);
+            EmployeeList.Add(C1);
+            //End of Temp Code
+
             Manager Dave = new Manager(EmployeeList, "Dave1234", "1234");
             CurrentManager = Dave;
             EmployeeLogin = new EmployeeLoginScreen(Dave);
             EmployeeMenu = new MenuForEmployee();
             DiningRoomDisplay = new DiningRoom();
             OrderOverview = new OrderOverview();
-            //End of Temp Code
+            //OrderCustomization = new OrderCustomization();
+                //If I cant figure out how to get all other sub menus to display there
+            //OrderAppetizer = new OrderAppetizer();
+            //...
         }
 
+        /*
+                                                        //Might not need anymore
         //Paints the rectangles on the screen
         protected override void OnPaint(PaintEventArgs Event)
         {
@@ -95,7 +106,7 @@ namespace Sprint_2_GUI_Group1_1
             GraphicalUnit.FillRectangle(MiddleColor, Middle);
             GraphicalUnit.FillRectangle(BottomColor, Bottom);
             base.OnPaint(Event);
-        }
+        }*/
 
         //Loads the screen
         private void ScreenHost_Load(object sender, EventArgs e)
@@ -104,19 +115,20 @@ namespace Sprint_2_GUI_Group1_1
             EmployeeMenu.ScreenPointer(EmployeeLogin);
             EmployeeMenu.ScreenPointer2(DiningRoomDisplay);
             DiningRoomDisplay.ScreenPointer(EmployeeMenu);
-            OrderOverview.ScreenPointer(DiningRoomDisplay);
             DiningRoomDisplay.ScreenPointer2(OrderOverview);
             OrderOverview.ScreenPointer2(EmployeeMenu);
+            OrderOverview.ScreenPointer(DiningRoomDisplay);
             //To add a new screen, you need the pointers to the screens that screen interacts with
             //NextScreenToAdd.NSTAScreenPointer1(ScreenToPointTo);
             //ScreenToPointTo.STPTScreenPointerx(NextScreenToAdd);
 
             DisplayPanel.Controls.Add(EmployeeLogin);
             DisplayPanel.Controls.Add(EmployeeMenu);
-            EmployeeMenu.Hide();
             DisplayPanel.Controls.Add(DiningRoomDisplay);
-            DiningRoomDisplay.Hide();
             DisplayPanel.Controls.Add(OrderOverview);
+
+            DiningRoomDisplay.Hide();
+            EmployeeMenu.Hide();
             OrderOverview.Hide();
 
             //To add a new screen, you need to add it to the panel displayed on ScreenHost

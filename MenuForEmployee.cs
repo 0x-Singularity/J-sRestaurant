@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,11 +14,10 @@ namespace Sprint_2_GUI_Group1_1
 {
     public partial class MenuForEmployee : UserControl
     {
-        private FloorStaff CurrentEmployee;
+        private Employee CurrentEmployee;
         private bool isLoggedIn;
         private EmployeeLoginScreen EmployeeLogin;
         private DiningRoom DiningRoom;
-        private UserControl Screen3;
         public MenuForEmployee()
         {
             InitializeComponent();
@@ -28,12 +28,15 @@ namespace Sprint_2_GUI_Group1_1
             Hide();
             EmployeeLogin.Show();
         }
-        internal void LogInCurrentEmployee(bool isLoggedIn, FloorStaff CurrentEmployee)
+        internal void LogInCurrentEmployee(bool isLoggedIn, Employee CurrentEmployee)
         {
             this.CurrentEmployee = CurrentEmployee;
-            ShowCurrentEmployee.Text = "Current Employee: " + CurrentEmployee.GetEmployeeName();
+            UpdateText();
             isLoggedIn = true;
-
+        }
+        internal void UpdateText()
+        {
+            ShowCurrentEmployee.Text = "Current Employee: " + CurrentEmployee.GetEmployeeName();
         }
         internal void ScreenPointer(EmployeeLoginScreen UserControlToPointTo)
         {
@@ -43,16 +46,26 @@ namespace Sprint_2_GUI_Group1_1
         {
             DiningRoom = UserControlToPointTo;
         }
-        internal void ScreenPointer3(UserControl UserControlToPointTo)
-        {
-            Screen3 = UserControlToPointTo;
-        }
 
-        private void Orders_Click(object sender, EventArgs e)
+        private void DiningFloor_Click(object sender, EventArgs e)  
         {
-            DiningRoom.SetEmployee(CurrentEmployee);
-            DiningRoom.Show();
-            Hide();
+            UpdateText();
+            try
+            {
+                if (CurrentEmployee is FloorStaff)
+                {
+                    DiningRoom.SetEmployee((FloorStaff)CurrentEmployee);
+                    DiningRoom.Show();
+                    Hide();
+                }
+                else if (CurrentEmployee is Employee) {
+                    ShowCurrentEmployee.Text = "You are not a member of the floor staff.";
+                }
+            }
+            catch (Exception E)
+            {
+                ShowCurrentEmployee.Text = "Error: " + E.Message;
+            }
         }
     }
 }

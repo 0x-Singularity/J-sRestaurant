@@ -23,11 +23,7 @@ namespace Sprint_2_GUI_Group1_1
         }
         public void CreateNewOrder(Table T)
         {
-            
-        }
-        public void ChangeCurrentOrder(Table T)
-        {
-            T.ChangeCurrentOrder();
+            T.NewOrder();
         }
         public void ModifyCurrentOrder(Table T)
         {

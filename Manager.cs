@@ -5,6 +5,7 @@ namespace Sprint_2_GUI_Group1_1
 {
     internal class Manager
     {
+        private DiningRoom DiningRoomPointer;
         private string Username;
         private string Password;
         private List<Employee> Employees;

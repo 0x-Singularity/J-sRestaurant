@@ -37,6 +37,7 @@ namespace Sprint_2_GUI_Group1_1
                 throw new Exception("Item not contained in order.");
             }
         }
+
         public Item FindItemInOrder(Item I)
         {
             foreach (Item i in OrderItems)

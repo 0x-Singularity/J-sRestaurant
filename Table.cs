@@ -40,11 +40,7 @@ namespace Sprint_2_GUI_Group1_1
         }
         public void NewOrder()
         {
-
-        }
-        public void ChangeCurrentOrder()
-        {
-            
+            CurrentOrder = new Order();
         }
         public void ModifyCurrentOrder()
         {
