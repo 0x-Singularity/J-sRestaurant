@@ -31,7 +31,7 @@
             this.Login = new System.Windows.Forms.Button();
             this.DiningFloor = new System.Windows.Forms.Button();
             this.ShowCurrentEmployee = new System.Windows.Forms.Label();
-            this.OrderHistory = new System.Windows.Forms.Button();
+            this.ToCurrentOrders = new System.Windows.Forms.Button();
             this.GraphOfTheDay = new System.Windows.Forms.PictureBox();
             this.ToManagerLogin = new System.Windows.Forms.Button();
             this.BackgroundEmployeeMenu = new System.Windows.Forms.PictureBox();
@@ -57,26 +57,26 @@
             this.DiningFloor.TabIndex = 1;
             this.DiningFloor.Text = "Dining Room";
             this.DiningFloor.UseVisualStyleBackColor = true;
-            this.DiningFloor.Click += new System.EventHandler(this.Orders_Click);
+            this.DiningFloor.Click += new System.EventHandler(this.DiningFloor_Click);
             // 
             // ShowCurrentEmployee
             // 
             this.ShowCurrentEmployee.BackColor = System.Drawing.SystemColors.Control;
-            this.ShowCurrentEmployee.Location = new System.Drawing.Point(540, 75);
+            this.ShowCurrentEmployee.Location = new System.Drawing.Point(490, 75);
             this.ShowCurrentEmployee.Name = "ShowCurrentEmployee";
-            this.ShowCurrentEmployee.Size = new System.Drawing.Size(200, 25);
+            this.ShowCurrentEmployee.Size = new System.Drawing.Size(300, 25);
             this.ShowCurrentEmployee.TabIndex = 2;
-            this.ShowCurrentEmployee.Text = "Current Employee:";
+            this.ShowCurrentEmployee.Text = "Current Employee: Not Logged In";
             this.ShowCurrentEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // OrderHistory
+            // ToCurrentOrders
             // 
-            this.OrderHistory.Location = new System.Drawing.Point(689, 367);
-            this.OrderHistory.Name = "OrderHistory";
-            this.OrderHistory.Size = new System.Drawing.Size(190, 190);
-            this.OrderHistory.TabIndex = 3;
-            this.OrderHistory.Text = "Order History";
-            this.OrderHistory.UseVisualStyleBackColor = true;
+            this.ToCurrentOrders.Location = new System.Drawing.Point(689, 367);
+            this.ToCurrentOrders.Name = "ToCurrentOrders";
+            this.ToCurrentOrders.Size = new System.Drawing.Size(190, 190);
+            this.ToCurrentOrders.TabIndex = 3;
+            this.ToCurrentOrders.Text = "Current Orders";
+            this.ToCurrentOrders.UseVisualStyleBackColor = true;
             // 
             // GraphOfTheDay
             // 
@@ -114,7 +114,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.ToManagerLogin);
             this.Controls.Add(this.GraphOfTheDay);
-            this.Controls.Add(this.OrderHistory);
+            this.Controls.Add(this.ToCurrentOrders);
             this.Controls.Add(this.ShowCurrentEmployee);
             this.Controls.Add(this.DiningFloor);
             this.Controls.Add(this.Login);
@@ -132,7 +132,7 @@
         private Button Login;
         private Button DiningFloor;
         private Label ShowCurrentEmployee;
-        private Button OrderHistory;
+        private Button ToCurrentOrders;
         private PictureBox GraphOfTheDay;
         private Button ToManagerLogin;
         private PictureBox BackgroundEmployeeMenu;

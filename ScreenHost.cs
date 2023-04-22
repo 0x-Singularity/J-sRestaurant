@@ -9,36 +9,89 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Sprint_2_Group_1_1
+namespace Sprint_2_GUI_Group1_1
 {
     public partial class ScreenHost : Form
     {
-        //Temp code?
-        private List<Employee> EmployeeList = new List<Employee>();
-        private List<Table> Tables = new List<Table>();
-        //End of Temp Code
-
         //Attributes
+        private List<Employee> EmployeeList = new List<Employee>();
         private Manager CurrentManager;
         private EmployeeLoginScreen EmployeeLogin;
         private MenuForEmployee EmployeeMenu;
         private DiningRoom DiningRoomDisplay;
+        private OrderOverview OrderOverview;
 
         //Constructor
         internal ScreenHost()
         {
             InitializeComponent();
             //Temp Code
-            EmployeeList.Add(new Employee("John", 1234));
-            EmployeeList.Add(new Employee("Adam", 4321));
+
+            //Waiter 1
+            Waiter W1 = new Waiter("John", 1111);
+            string[] AssignedTablesW1 = new string[9];
+            AssignedTablesW1[0] = "Table1A";
+            AssignedTablesW1[1] = "Table2A";
+            AssignedTablesW1[2] = "Table3A";
+            AssignedTablesW1[3] = "Table4A";
+            AssignedTablesW1[4] = "Table5A";
+            AssignedTablesW1[5] = "Table1B";
+            AssignedTablesW1[6] = "Table2B";
+            AssignedTablesW1[7] = "Table3B";
+            AssignedTablesW1[8] = "Table4B";
+            W1.AssignTables(true, AssignedTablesW1);
+            EmployeeList.Add(W1);
+
+            //Waiter 2
+            Waiter W2 = new Waiter("Adam", 2222);
+            string[] AssignedTablesW2 = new string[10];
+            AssignedTablesW2[0] = "Table6A";
+            AssignedTablesW2[1] = "Table5B";
+            AssignedTablesW2[2] = "Table6B";
+            AssignedTablesW2[3] = "Table5C";
+            AssignedTablesW2[4] = "Table6C";
+            AssignedTablesW2[5] = "Table5D";
+            AssignedTablesW2[6] = "Table6D";
+            AssignedTablesW2[7] = "Table5E";
+            AssignedTablesW2[8] = "Table6E";
+            AssignedTablesW2[9] = "Table6F";
+            W2.AssignTables(true, AssignedTablesW2);
+            EmployeeList.Add(W2);
+
+            //Waiter 3
+            Waiter W3 = new Waiter("Andrew", 3333);
+            string[] AssignedTablesW3 = new string[9];
+            AssignedTablesW3[0] = "Table1E";
+            AssignedTablesW3[1] = "Table2E";
+            AssignedTablesW3[2] = "Table3E";
+            AssignedTablesW3[3] = "Table4E";
+            AssignedTablesW3[4] = "Table1F";
+            AssignedTablesW3[5] = "Table2F";
+            AssignedTablesW3[6] = "Table3F";
+            AssignedTablesW3[7] = "Table4F";
+            AssignedTablesW3[8] = "Table5F";
+            W3.AssignTables(true, AssignedTablesW3);
+            EmployeeList.Add(W3);
+
+            //Cook 1
+            Cook C1 = new Cook("Mark", 4444);
+            EmployeeList.Add(C1);
+            //End of Temp Code
+
             Manager Dave = new Manager(EmployeeList, "Dave1234", "1234");
             CurrentManager = Dave;
             EmployeeLogin = new EmployeeLoginScreen(Dave);
             EmployeeMenu = new MenuForEmployee();
             DiningRoomDisplay = new DiningRoom();
-            //End of Temp Code
+            OrderOverview = new OrderOverview();
+            //OrderCustomization = new OrderCustomization();
+                //If I cant figure out how to get all other sub menus to display there
+            //OrderAppetizer = new OrderAppetizer();
+            //...
         }
 
+        /*
+                                                        //Might not need anymore
         //Paints the rectangles on the screen
         protected override void OnPaint(PaintEventArgs Event)
         {
@@ -53,7 +106,7 @@ namespace Sprint_2_Group_1_1
             GraphicalUnit.FillRectangle(MiddleColor, Middle);
             GraphicalUnit.FillRectangle(BottomColor, Bottom);
             base.OnPaint(Event);
-        }
+        }*/
 
         //Loads the screen
         private void ScreenHost_Load(object sender, EventArgs e)
@@ -62,15 +115,21 @@ namespace Sprint_2_Group_1_1
             EmployeeMenu.ScreenPointer(EmployeeLogin);
             EmployeeMenu.ScreenPointer2(DiningRoomDisplay);
             DiningRoomDisplay.ScreenPointer(EmployeeMenu);
+            DiningRoomDisplay.ScreenPointer2(OrderOverview);
+            OrderOverview.ScreenPointer2(EmployeeMenu);
+            OrderOverview.ScreenPointer(DiningRoomDisplay);
             //To add a new screen, you need the pointers to the screens that screen interacts with
             //NextScreenToAdd.NSTAScreenPointer1(ScreenToPointTo);
             //ScreenToPointTo.STPTScreenPointerx(NextScreenToAdd);
 
             DisplayPanel.Controls.Add(EmployeeLogin);
             DisplayPanel.Controls.Add(EmployeeMenu);
-            EmployeeMenu.Hide();
             DisplayPanel.Controls.Add(DiningRoomDisplay);
+            DisplayPanel.Controls.Add(OrderOverview);
+
             DiningRoomDisplay.Hide();
+            EmployeeMenu.Hide();
+            OrderOverview.Hide();
 
             //To add a new screen, you need to add it to the panel displayed on ScreenHost
             //DisplayPanel.Controls.Add(NextScreenToAdd);
