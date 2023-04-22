@@ -42,6 +42,18 @@ namespace Sprint_2_GUI_Group1_1
         {
             CurrentOrder = new Order();
         }
+        public Order GetOrder()
+        {
+            return CurrentOrder;
+        }
+        public bool HasOrder()
+        {
+            if (CurrentOrder != null)
+            {
+                return true;
+            }
+            return false;
+        }
         public void ModifyCurrentOrder()
         {
 

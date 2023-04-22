@@ -14,6 +14,7 @@ namespace Sprint_2_GUI_Group1_1
     {
         private MenuForEmployee MainMenu;
         private OrderOverview OrderOverview;
+        private CurrentOrderDisplay CurrentOrderDisplay;
         private FloorStaff CurrentEmployee;
         private string[] ListOfAssignedTables;
         private Table[] AllTables = new Table[28];
@@ -33,6 +34,12 @@ namespace Sprint_2_GUI_Group1_1
             this.OrderOverview = OrderOverview;
             this.OrderOverview.SetCurrentEmployee(CurrentEmployee);
         }
+
+        internal void ScreenPointer3(CurrentOrderDisplay Pointer)
+        {
+            CurrentOrderDisplay = Pointer;
+        }
+
         private void FillAllTablesAndButtons()
         {
             int Counter = -1;
@@ -473,6 +480,12 @@ namespace Sprint_2_GUI_Group1_1
         {
             Hide();
             MainMenu.Show();
+        }
+
+        private void ToCurrentOrders_Click(object sender, EventArgs e)
+        {
+            CurrentOrderDisplay.Show();
+            Hide();
         }
     }
 }

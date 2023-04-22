@@ -18,6 +18,7 @@ namespace Sprint_2_GUI_Group1_1
         private bool isLoggedIn;
         private EmployeeLoginScreen EmployeeLogin;
         private DiningRoom DiningRoom;
+        private CurrentOrderDisplay CurrentOrderDisplay;
         public MenuForEmployee()
         {
             InitializeComponent();
@@ -46,7 +47,10 @@ namespace Sprint_2_GUI_Group1_1
         {
             DiningRoom = UserControlToPointTo;
         }
-
+        internal void ScreenPointer3(CurrentOrderDisplay UserControlToPointTo)
+        {
+            CurrentOrderDisplay = UserControlToPointTo;
+        }
         private void DiningFloor_Click(object sender, EventArgs e)  
         {
             UpdateText();
@@ -66,6 +70,13 @@ namespace Sprint_2_GUI_Group1_1
             {
                 ShowCurrentEmployee.Text = "Error: " + E.Message;
             }
+        }
+
+        private void ToCurrentOrders_Click(object sender, EventArgs e)
+        {
+            CurrentOrderDisplay.Show();
+            CurrentOrderDisplay.DisplayOnFIFOs();
+            Hide();
         }
     }
 }

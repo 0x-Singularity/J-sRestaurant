@@ -20,6 +20,8 @@ namespace Sprint_2_GUI_Group1_1
         private MenuForEmployee EmployeeMenu;
         private DiningRoom DiningRoomDisplay;
         private OrderOverview OrderOverview;
+        private CurrentOrderDisplay CurrentOrderDisplay;
+        private CustomizationMenu CustomizationMenu;
 
         //Constructor
         internal ScreenHost()
@@ -84,29 +86,13 @@ namespace Sprint_2_GUI_Group1_1
             EmployeeMenu = new MenuForEmployee();
             DiningRoomDisplay = new DiningRoom();
             OrderOverview = new OrderOverview();
+            CurrentOrderDisplay = new CurrentOrderDisplay();
+            CustomizationMenu = new CustomizationMenu();
             //OrderCustomization = new OrderCustomization();
                 //If I cant figure out how to get all other sub menus to display there
             //OrderAppetizer = new OrderAppetizer();
             //...
         }
-
-        /*
-                                                        //Might not need anymore
-        //Paints the rectangles on the screen
-        protected override void OnPaint(PaintEventArgs Event)
-        {
-            Graphics GraphicalUnit = Event.Graphics;
-            SolidBrush TopColor = new SolidBrush(Color.Ivory);
-            SolidBrush MiddleColor = new SolidBrush(Color.DarkGray);
-            SolidBrush BottomColor = new SolidBrush(Color.LightSlateGray);
-            Rectangle Top = new Rectangle(0, 0, 1280, 240);
-            Rectangle Middle = new Rectangle(0, 241, 1280, 240);
-            Rectangle Bottom = new Rectangle(0, 481, 1280, 240);
-            GraphicalUnit.FillRectangle(TopColor, Top);
-            GraphicalUnit.FillRectangle(MiddleColor, Middle);
-            GraphicalUnit.FillRectangle(BottomColor, Bottom);
-            base.OnPaint(Event);
-        }*/
 
         //Loads the screen
         private void ScreenHost_Load(object sender, EventArgs e)
@@ -114,10 +100,16 @@ namespace Sprint_2_GUI_Group1_1
             EmployeeLogin.ScreenPointer(EmployeeMenu);
             EmployeeMenu.ScreenPointer(EmployeeLogin);
             EmployeeMenu.ScreenPointer2(DiningRoomDisplay);
+            EmployeeMenu.ScreenPointer3(CurrentOrderDisplay);
             DiningRoomDisplay.ScreenPointer(EmployeeMenu);
             DiningRoomDisplay.ScreenPointer2(OrderOverview);
+            DiningRoomDisplay.ScreenPointer3(CurrentOrderDisplay);
             OrderOverview.ScreenPointer2(EmployeeMenu);
             OrderOverview.ScreenPointer(DiningRoomDisplay);
+            OrderOverview.ScreenPointer3(CustomizationMenu);
+            CurrentOrderDisplay.ScreenPointer(OrderOverview);
+            CurrentOrderDisplay.ScreenPointer2(EmployeeMenu);
+            
             //To add a new screen, you need the pointers to the screens that screen interacts with
             //NextScreenToAdd.NSTAScreenPointer1(ScreenToPointTo);
             //ScreenToPointTo.STPTScreenPointerx(NextScreenToAdd);
@@ -126,10 +118,12 @@ namespace Sprint_2_GUI_Group1_1
             DisplayPanel.Controls.Add(EmployeeMenu);
             DisplayPanel.Controls.Add(DiningRoomDisplay);
             DisplayPanel.Controls.Add(OrderOverview);
+            DisplayPanel.Controls.Add(CurrentOrderDisplay);
 
             DiningRoomDisplay.Hide();
             EmployeeMenu.Hide();
             OrderOverview.Hide();
+            CurrentOrderDisplay.Hide();
 
             //To add a new screen, you need to add it to the panel displayed on ScreenHost
             //DisplayPanel.Controls.Add(NextScreenToAdd);

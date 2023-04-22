@@ -77,6 +77,7 @@
             this.ToCurrentOrders.TabIndex = 3;
             this.ToCurrentOrders.Text = "Current Orders";
             this.ToCurrentOrders.UseVisualStyleBackColor = true;
+            this.ToCurrentOrders.Click += new System.EventHandler(this.ToCurrentOrders_Click);
             // 
             // GraphOfTheDay
             // 
