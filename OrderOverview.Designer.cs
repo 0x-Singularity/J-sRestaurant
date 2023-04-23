@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.ToMainMenu = new System.Windows.Forms.Button();
-            this.ToRegister = new System.Windows.Forms.Button();
+            this.ToCategories = new System.Windows.Forms.Button();
             this.AddItemToOrder = new System.Windows.Forms.Button();
             this.OrderNumberDisplay = new System.Windows.Forms.Label();
             this.SubMenuPanel = new System.Windows.Forms.Panel();
@@ -39,6 +39,9 @@
             this.TableDisplay = new System.Windows.Forms.Button();
             this.OrderItemNames = new System.Windows.Forms.Label();
             this.OrderItemPrices = new System.Windows.Forms.Label();
+            this.ToOrderDisplayScreen = new System.Windows.Forms.Button();
+            this.TipDisplay = new System.Windows.Forms.Label();
+            this.TotalDisplay = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundOrderOverview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,14 +55,15 @@
             this.ToMainMenu.UseVisualStyleBackColor = true;
             this.ToMainMenu.Click += new System.EventHandler(this.ToMainMenu_Click);
             // 
-            // ToRegister
+            // ToCategories
             // 
-            this.ToRegister.Location = new System.Drawing.Point(999, 620);
-            this.ToRegister.Name = "ToRegister";
-            this.ToRegister.Size = new System.Drawing.Size(100, 69);
-            this.ToRegister.TabIndex = 1;
-            this.ToRegister.Text = "Back to Register Menu";
-            this.ToRegister.UseVisualStyleBackColor = true;
+            this.ToCategories.Location = new System.Drawing.Point(999, 620);
+            this.ToCategories.Name = "ToCategories";
+            this.ToCategories.Size = new System.Drawing.Size(100, 69);
+            this.ToCategories.TabIndex = 1;
+            this.ToCategories.Text = "Back to Category Menu";
+            this.ToCategories.UseVisualStyleBackColor = true;
+            this.ToCategories.Click += new System.EventHandler(this.ToCategories_Click);
             // 
             // AddItemToOrder
             // 
@@ -80,6 +84,7 @@
             // 
             // SubMenuPanel
             // 
+            this.SubMenuPanel.BackColor = System.Drawing.SystemColors.ControlDark;
             this.SubMenuPanel.Location = new System.Drawing.Point(680, 50);
             this.SubMenuPanel.Name = "SubMenuPanel";
             this.SubMenuPanel.Size = new System.Drawing.Size(550, 550);
@@ -129,7 +134,6 @@
             this.OrderItemNames.Name = "OrderItemNames";
             this.OrderItemNames.Size = new System.Drawing.Size(220, 300);
             this.OrderItemNames.TabIndex = 9;
-            this.OrderItemNames.Text = "Captain Crunch Chicken Tenders";
             this.OrderItemNames.UseMnemonic = false;
             // 
             // OrderItemPrices
@@ -139,13 +143,43 @@
             this.OrderItemPrices.Name = "OrderItemPrices";
             this.OrderItemPrices.Size = new System.Drawing.Size(220, 300);
             this.OrderItemPrices.TabIndex = 10;
-            this.OrderItemPrices.Text = "Captain Crunch Chicken Tenders";
             this.OrderItemPrices.UseMnemonic = false;
+            // 
+            // ToOrderDisplayScreen
+            // 
+            this.ToOrderDisplayScreen.Location = new System.Drawing.Point(287, 620);
+            this.ToOrderDisplayScreen.Name = "ToOrderDisplayScreen";
+            this.ToOrderDisplayScreen.Size = new System.Drawing.Size(100, 69);
+            this.ToOrderDisplayScreen.TabIndex = 11;
+            this.ToOrderDisplayScreen.Text = "Send and Pay";
+            this.ToOrderDisplayScreen.UseVisualStyleBackColor = true;
+            this.ToOrderDisplayScreen.Click += new System.EventHandler(this.ToOrderDisplayScreen_Click);
+            // 
+            // TipDisplay
+            // 
+            this.TipDisplay.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.TipDisplay.Location = new System.Drawing.Point(50, 375);
+            this.TipDisplay.Name = "TipDisplay";
+            this.TipDisplay.Size = new System.Drawing.Size(220, 220);
+            this.TipDisplay.TabIndex = 12;
+            this.TipDisplay.UseMnemonic = false;
+            // 
+            // TotalDisplay
+            // 
+            this.TotalDisplay.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.TotalDisplay.Location = new System.Drawing.Point(270, 375);
+            this.TotalDisplay.Name = "TotalDisplay";
+            this.TotalDisplay.Size = new System.Drawing.Size(220, 220);
+            this.TotalDisplay.TabIndex = 13;
+            this.TotalDisplay.UseMnemonic = false;
             // 
             // OrderOverview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.TotalDisplay);
+            this.Controls.Add(this.TipDisplay);
+            this.Controls.Add(this.ToOrderDisplayScreen);
             this.Controls.Add(this.OrderItemPrices);
             this.Controls.Add(this.OrderItemNames);
             this.Controls.Add(this.TableDisplay);
@@ -154,7 +188,7 @@
             this.Controls.Add(this.SubMenuPanel);
             this.Controls.Add(this.OrderNumberDisplay);
             this.Controls.Add(this.AddItemToOrder);
-            this.Controls.Add(this.ToRegister);
+            this.Controls.Add(this.ToCategories);
             this.Controls.Add(this.ToMainMenu);
             this.Controls.Add(this.BackgroundOrderOverview);
             this.Name = "OrderOverview";
@@ -167,7 +201,7 @@
         #endregion
 
         private Button ToMainMenu;
-        private Button ToRegister;
+        private Button ToCategories;
         private Button AddItemToOrder;
         private Label OrderNumberDisplay;
         private Panel SubMenuPanel;
@@ -177,5 +211,8 @@
         private Button TableDisplay;
         private Label OrderItemNames;
         private Label OrderItemPrices;
+        private Button ToOrderDisplayScreen;
+        private Label TipDisplay;
+        private Label TotalDisplay;
     }
 }

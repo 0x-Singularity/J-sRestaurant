@@ -21,10 +21,34 @@ namespace Sprint_2_GUI_Group1_1
         {
             return OrderID;
         }
+        public bool GetStatus()
+        {
+            if (New || InProgress)
+            {
+                return true;
+            }
+            else if (Complete)
+            {
+                return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public void AddItemToOrder(int ItemID)
         {
             Menu menu = new Menu();
             OrderItems.Add(menu.FindItem(ItemID));
+        }
+        public void AddItemToOrder(string ItemName)
+        {
+            Menu menu = new Menu();
+            OrderItems.Add(menu.FindItem(ItemName));
+        }
+        public void AddItemToOrder(Item ItemToAdd)
+        {
+            OrderItems.Add(ItemToAdd);
         }
         public void RemoveItemFromOrder(Item ItemToRemove)
         {
@@ -61,6 +85,19 @@ namespace Sprint_2_GUI_Group1_1
                 Complete = true;
                 InProgress = false;
             }
+        }
+        public List<Item> GetList()
+        {
+            return OrderItems;
+        }
+        public override string ToString()
+        {
+            string Holder = "";
+            for (int i = 0; i < OrderItems.Count; i++)
+            {
+                Holder += "\n" + OrderItems[i].GetName();
+            }
+            return Holder;
         }
     }
 }

@@ -38,10 +38,9 @@ namespace Sprint_2_GUI_Group1_1
             for (int i = 0; i < FIFOs.Count; i++)
             {
                 FIFOs[i].Text = "Order #: ";
-                if (OrderList.Count < i && OrderList.Count != 0)
+                if (OrderList.Count < i && OrderList.Count - i -1 > 0)
                 {
-                    int Temp = OrderList[i].GetID();
-                    FIFOs[i].Text += "" + Temp;
+                    FIFOs[i].Text += "" + OrderList[i].GetID();
                 }
             }
         }

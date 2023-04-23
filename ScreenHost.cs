@@ -109,6 +109,7 @@ namespace Sprint_2_GUI_Group1_1
             OrderOverview.ScreenPointer3(CustomizationMenu);
             CurrentOrderDisplay.ScreenPointer(OrderOverview);
             CurrentOrderDisplay.ScreenPointer2(EmployeeMenu);
+            CustomizationMenu.ScreenPointer(OrderOverview);
             
             //To add a new screen, you need the pointers to the screens that screen interacts with
             //NextScreenToAdd.NSTAScreenPointer1(ScreenToPointTo);

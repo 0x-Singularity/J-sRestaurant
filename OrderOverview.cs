@@ -55,32 +55,63 @@ namespace Sprint_2_GUI_Group1_1
         public void ScreenPointer3(CustomizationMenu Pointer)
         {
             CustomizationMenu = Pointer;
+            DisplaySubMenuPanel();
         }
 
+        internal void SetOrderLabelDisplay()
+        {
+            List<Item> CurrentOrderItems = CurrentOrder.GetList();
+            string Names = "";
+            string Prices = "";
+            float Subtotal = 0.0f;
+            if (CurrentOrder.GetList() != null)
+            {
+                foreach (Item I in CurrentOrderItems)
+                {
+                    Names += I.GetName() + "\n";
+                    float PriceOfI = I.GetCost();
+                    Subtotal += PriceOfI;
+                    if (PriceOfI < 10) Prices += "0";
+                    if ((int)(PriceOfI * 100) / (int)PriceOfI > 100) Prices += PriceOfI + "0\n";
+                    else Prices += I.GetCost() + ".00\n";
+                }
+            }
+            OrderItemNames.Text = Names;
+            OrderItemPrices.Text = Prices;
+            float TipTotal1 = Subtotal * 0.15f;
+            float TipTotal2 = Subtotal * 0.2f;
+            string Tip1 = "0.00";
+            string Tip2 = "0.00";
+            if (Subtotal > 0)
+            {
+                if ((int)(TipTotal1 * 100) / (int)TipTotal1 > 100) Tip1 = TipTotal1 + "0";
+                else Tip1 = TipTotal1 + ".00";
+                if ((int)(TipTotal2 * 100) / (int)TipTotal2 > 100) Tip2 = TipTotal2 + "0";
+                else Tip2 = TipTotal2 + ".00";
+            }
+            TipDisplay.Text = "Tip (15%): $" + Tip1 + "\nTip (20%): $" + Tip2;
+        }
         internal void DisplaySubMenuPanel()
         {
             SubMenuPanel.Controls.Add(CustomizationMenu);
-            CustomizationMenu.Show();
+            CustomizationMenu.ScreenPointer(this);
+            //CustomizationMenu.Show();
         }
 
         public void SetTable(Table NewTable)
         {
             this.CurrentTable = NewTable;
-            if (CurrentTable.HasOrder())
-            {
-                SetOrder(CurrentTable.GetOrder());
-                CurrentOrders.Add(GetOrder());
-            }
-            else
-            {
-                CurrentTable.NewOrder();
-                SetOrder(CurrentTable.GetOrder());
-                CurrentOrders.Add(GetOrder());
-            }
+            if (!CurrentTable.HasOrder()) CurrentTable.NewOrder();
+            SetOrder(CurrentTable.GetOrder());
+            CurrentOrders.Add(GetOrder());
+            SetOrderLabelDisplay();
+            CurrentTable.ChangeTableStatus("Occupied");
+            DiningRoomDisplay.ShowActiveStatusTables();
         }
         public void SetOrder(Order NewOrder)
         {
             CurrentOrder = NewOrder;
+            CustomizationMenu.SetOrder(CurrentOrder);
             OrderNumberDisplay.Text = "Order #: " + CurrentOrder.GetID();
             EmployeeNameLabel.Text = "Employee Name: " + CurrentEmployee.GetEmployeeName();
         }
@@ -105,6 +136,27 @@ namespace Sprint_2_GUI_Group1_1
         {
             Hide();
             DiningRoomDisplay.Show();
+            DiningRoomDisplay.ShowActiveStatusTables();
+        }
+
+        private void ToCategories_Click(object sender, EventArgs e)
+        {
+            DisplaySubMenuPanel();
+        }
+
+        private void ToOrderDisplayScreen_Click(object sender, EventArgs e)
+        {
+            if (!CurrentOrder.GetStatus())
+            {
+                CurrentTable.ChangeTableStatus("Needs Attention");
+                DiningRoomDisplay.ShowActiveStatusTables();
+                DiningRoomDisplay.Show();
+                Hide();
+            }
+            else
+            {
+
+            }
         }
     }
 }

@@ -145,7 +145,7 @@ namespace Sprint_2_GUI_Group1_1
             }
             ShowActiveStatusTables();
         }
-        private void ShowActiveStatusTables()
+        internal void ShowActiveStatusTables()
         {
             for (int i = 0; i < AllTables.Length; i++)
             {
