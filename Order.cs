@@ -9,9 +9,6 @@ namespace Sprint_2_GUI_Group1_1
         private static int OrderNum = 1;
         private int OrderID;
         private string Status;
-        private bool New = false;
-        private bool InProgress = false;
-        private bool Complete = false;
         public Order()
         {
             OrderID = OrderNum++;
@@ -21,20 +18,9 @@ namespace Sprint_2_GUI_Group1_1
         {
             return OrderID;
         }
-        public bool GetStatus()
+        public string GetStatus()
         {
-            if (New || InProgress)
-            {
-                return true;
-            }
-            else if (Complete)
-            {
-                return false;
-            }
-            else
-            {
-                return false;
-            }
+            return Status;
         }
         public void AddItemToOrder(int ItemID)
         {
@@ -75,15 +61,13 @@ namespace Sprint_2_GUI_Group1_1
         }
         public void ChangeOrderStatus()
         {
-            if (New)
+            if (Status == null)
             {
-                InProgress = true;
-                New = false;
+                Status = "New";
             }
-            else if (InProgress)
+            else if (Status == "New")
             {
-                Complete = true;
-                InProgress = false;
+                Status = "Complete";
             }
         }
         public List<Item> GetList()

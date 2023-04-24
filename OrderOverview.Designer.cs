@@ -39,7 +39,7 @@
             this.TableDisplay = new System.Windows.Forms.Button();
             this.OrderItemNames = new System.Windows.Forms.Label();
             this.OrderItemPrices = new System.Windows.Forms.Label();
-            this.ToOrderDisplayScreen = new System.Windows.Forms.Button();
+            this.SendToKitchen = new System.Windows.Forms.Button();
             this.TipDisplay = new System.Windows.Forms.Label();
             this.TotalDisplay = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundOrderOverview)).BeginInit();
@@ -145,15 +145,15 @@
             this.OrderItemPrices.TabIndex = 10;
             this.OrderItemPrices.UseMnemonic = false;
             // 
-            // ToOrderDisplayScreen
+            // SendToKitchen
             // 
-            this.ToOrderDisplayScreen.Location = new System.Drawing.Point(287, 620);
-            this.ToOrderDisplayScreen.Name = "ToOrderDisplayScreen";
-            this.ToOrderDisplayScreen.Size = new System.Drawing.Size(100, 69);
-            this.ToOrderDisplayScreen.TabIndex = 11;
-            this.ToOrderDisplayScreen.Text = "Send and Pay";
-            this.ToOrderDisplayScreen.UseVisualStyleBackColor = true;
-            this.ToOrderDisplayScreen.Click += new System.EventHandler(this.ToOrderDisplayScreen_Click);
+            this.SendToKitchen.Location = new System.Drawing.Point(287, 620);
+            this.SendToKitchen.Name = "SendToKitchen";
+            this.SendToKitchen.Size = new System.Drawing.Size(100, 69);
+            this.SendToKitchen.TabIndex = 11;
+            this.SendToKitchen.Text = "Send and Pay";
+            this.SendToKitchen.UseVisualStyleBackColor = true;
+            this.SendToKitchen.Click += new System.EventHandler(this.SendToKitchen_Click);
             // 
             // TipDisplay
             // 
@@ -179,7 +179,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.TotalDisplay);
             this.Controls.Add(this.TipDisplay);
-            this.Controls.Add(this.ToOrderDisplayScreen);
+            this.Controls.Add(this.SendToKitchen);
             this.Controls.Add(this.OrderItemPrices);
             this.Controls.Add(this.OrderItemNames);
             this.Controls.Add(this.TableDisplay);
@@ -211,7 +211,7 @@
         private Button TableDisplay;
         private Label OrderItemNames;
         private Label OrderItemPrices;
-        private Button ToOrderDisplayScreen;
+        private Button SendToKitchen;
         private Label TipDisplay;
         private Label TotalDisplay;
     }

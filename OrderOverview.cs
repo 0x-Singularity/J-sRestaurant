@@ -24,15 +24,6 @@ namespace Sprint_2_GUI_Group1_1
             InitializeComponent();
             BackgroundOrderOverview.Paint += new PaintEventHandler(BackgroundOrderOverview_Paint);
         }
-
-        /*protected override void OnPaint(PaintEventArgs Event)
-        {
-            Graphics GraphicalUnit = Event.Graphics;
-            Pen Black = new Pen(new SolidBrush(Color.Black));
-            GraphicalUnit.DrawLine(Black, 640, 0, 640, 720);
-            GraphicalUnit.DrawLine(Black, 641, 0, 641, 720);
-            base.OnPaint(Event);
-        }*/
         protected void BackgroundOrderOverview_Paint(object Sender, PaintEventArgs Event)
         {
             var GraphicalUnit = Event.Graphics;
@@ -70,26 +61,53 @@ namespace Sprint_2_GUI_Group1_1
                 {
                     Names += I.GetName() + "\n";
                     float PriceOfI = I.GetCost();
-                    Subtotal += PriceOfI;
                     if (PriceOfI < 10) Prices += "0";
-                    if ((int)(PriceOfI * 100) / (int)PriceOfI > 100) Prices += PriceOfI + "0\n";
-                    else Prices += I.GetCost() + ".00\n";
+                    Prices += MakeNumberActAsMoney(PriceOfI + "") + "\n";
+                    Subtotal += PriceOfI;
                 }
             }
             OrderItemNames.Text = Names;
             OrderItemPrices.Text = Prices;
             float TipTotal1 = Subtotal * 0.15f;
             float TipTotal2 = Subtotal * 0.2f;
-            string Tip1 = "0.00";
-            string Tip2 = "0.00";
-            if (Subtotal > 0)
-            {
-                if ((int)(TipTotal1 * 100) / (int)TipTotal1 > 100) Tip1 = TipTotal1 + "0";
-                else Tip1 = TipTotal1 + ".00";
-                if ((int)(TipTotal2 * 100) / (int)TipTotal2 > 100) Tip2 = TipTotal2 + "0";
-                else Tip2 = TipTotal2 + ".00";
-            }
+            float Tax = Subtotal * 0.07f;
+            float Total = Subtotal + Tax;
+            string Tip1 = MakeNumberActAsMoney(TipTotal1 + "");
+            string Tip2 = MakeNumberActAsMoney(TipTotal2 + "");
             TipDisplay.Text = "Tip (15%): $" + Tip1 + "\nTip (20%): $" + Tip2;
+            TotalDisplay.Text = "Subtotal: " + MakeNumberActAsMoney(Subtotal + "");
+            TotalDisplay.Text += "\nTax:          " + MakeNumberActAsMoney(Tax + "");
+            TotalDisplay.Text += "\nTotal:       " + MakeNumberActAsMoney(Total + "");
+        }
+
+        private string MakeNumberActAsMoney(string UnformattedNumber)
+        {
+            bool HasDecimal = false;
+            int i = 0;
+            for (; i < UnformattedNumber.Length; i++)
+            {
+                if (UnformattedNumber[i] == '.')
+                {
+                    HasDecimal = true;
+                    break;
+                }
+            }
+            if (HasDecimal)
+            {
+                int LengthAfterDecimal = UnformattedNumber.Length - i;
+                string NumberBeforeHolder = UnformattedNumber.Substring(0, i);
+                string Holder = UnformattedNumber.Substring(i, LengthAfterDecimal);
+                if (LengthAfterDecimal < 3)
+                {
+                    return NumberBeforeHolder + Holder + "0";
+                }
+                else if (LengthAfterDecimal > 3)
+                {
+                    return NumberBeforeHolder + Holder.Substring(0, 3);
+                }
+            }
+            else return UnformattedNumber + ".00";
+            return UnformattedNumber;
         }
         internal void DisplaySubMenuPanel()
         {
@@ -103,15 +121,15 @@ namespace Sprint_2_GUI_Group1_1
             this.CurrentTable = NewTable;
             if (!CurrentTable.HasOrder()) CurrentTable.NewOrder();
             SetOrder(CurrentTable.GetOrder());
-            CurrentOrders.Add(GetOrder());
             SetOrderLabelDisplay();
-            CurrentTable.ChangeTableStatus("Occupied");
+            CurrentTable.ChangeTableStatus(2);
             DiningRoomDisplay.ShowActiveStatusTables();
         }
         public void SetOrder(Order NewOrder)
         {
             CurrentOrder = NewOrder;
             CustomizationMenu.SetOrder(CurrentOrder);
+            TableDisplay.Text = CurrentTable.GetTableID();
             OrderNumberDisplay.Text = "Order #: " + CurrentOrder.GetID();
             EmployeeNameLabel.Text = "Employee Name: " + CurrentEmployee.GetEmployeeName();
         }
@@ -144,19 +162,15 @@ namespace Sprint_2_GUI_Group1_1
             DisplaySubMenuPanel();
         }
 
-        private void ToOrderDisplayScreen_Click(object sender, EventArgs e)
+        private void SendToKitchen_Click(object sender, EventArgs e)
         {
-            if (!CurrentOrder.GetStatus())
-            {
-                CurrentTable.ChangeTableStatus("Needs Attention");
-                DiningRoomDisplay.ShowActiveStatusTables();
-                DiningRoomDisplay.Show();
-                Hide();
-            }
-            else
-            {
-
-            }
+            CurrentOrders.Add(CurrentOrder);
+            CurrentOrder.ChangeOrderStatus();
+            DiningRoomDisplay.ShowActiveStatusTables();
+            DiningRoomDisplay.SetStatusOfTableAtIndex(CurrentTable.GetIndex(), 2);
+            CurrentTable.ChangeTableStatus(2);
+            DiningRoomDisplay.Show();
+            Hide();
         }
     }
 }

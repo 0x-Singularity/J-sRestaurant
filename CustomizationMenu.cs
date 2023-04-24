@@ -25,8 +25,6 @@ namespace Sprint_2_GUI_Group1_1
         //4 = Wraps
         //5 = Beverages
         //6 = Seating
-        private byte SeatingPlace;
-        //1 = Seat 1 and so on
         private Button[] ButtonList;
         public CustomizationMenu()
         {
@@ -58,6 +56,7 @@ namespace Sprint_2_GUI_Group1_1
             ButtonList[2].Text = "Sandwiches";
             ButtonList[3].Text = "Wraps";
             ButtonList[4].Text = "Beverages";
+            ButtonList[4].Show();
         }
 
         private void SetButtonTexts(string CategoryName)
@@ -103,10 +102,11 @@ namespace Sprint_2_GUI_Group1_1
 
         private void Seating()
         {
+            MenuDisplay = 6;
             MenuLabel.Text = "For what seat?";
             for (int i = 1; i < 5; i++)
             {
-                ButtonList[i].Text = "" + i;
+                ButtonList[i - 1].Text = "" + i;
             }
         }
 
@@ -119,12 +119,12 @@ namespace Sprint_2_GUI_Group1_1
                     ButtonList[4].Hide();
                     break;
                 case 6:
-                    //Set seat to 1
+                    Categories();
                     break;
                 default:
                     CurrentOrder.AddItemToOrder(CategoryItems[0]);
                     OrderOverview.SetOrderLabelDisplay();
-                    Categories();
+                    Seating();
                     break;
             }
         }
@@ -138,12 +138,12 @@ namespace Sprint_2_GUI_Group1_1
                     ButtonList[4].Hide();
                     break;
                 case 6:
-                    //Set seat to 2
+                    Categories();
                     break;
                 default:
                     CurrentOrder.AddItemToOrder(CategoryItems[1]);
                     OrderOverview.SetOrderLabelDisplay();
-                    Categories();
+                    Seating();
                     break;
             }
         }
@@ -157,12 +157,12 @@ namespace Sprint_2_GUI_Group1_1
                     ButtonList[4].Hide();
                     break;
                 case 6:
-                    //Set seat to 3
+                    Categories();
                     break;
                 default:
                     CurrentOrder.AddItemToOrder(CategoryItems[2]);
                     OrderOverview.SetOrderLabelDisplay();
-                    Categories();
+                    Seating();
                     break;
             }
         }
@@ -176,15 +176,14 @@ namespace Sprint_2_GUI_Group1_1
                     ButtonList[4].Hide();
                     break;
                 case 6:
-                    //Set seat to 4
+                    Categories();
                     break;
                 default:
                     CurrentOrder.AddItemToOrder(CategoryItems[3]);
                     OrderOverview.SetOrderLabelDisplay();
-                    Categories();
+                    Seating();
                     break;
             }
-            Seating();
         }
 
         private void CustomizationButton5_Click(object sender, EventArgs e)

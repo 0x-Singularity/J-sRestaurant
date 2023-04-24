@@ -79,7 +79,7 @@ namespace Sprint_2_GUI_Group1_1
                             Counter++;
                             break;
                     }
-                    AllTables[Counter] = new Table("Clean", Temp);
+                    AllTables[Counter] = new Table(1, Temp, Counter);
                     Temp = Tempy;
                 }
             }
@@ -133,6 +133,27 @@ namespace Sprint_2_GUI_Group1_1
             }
             return false;
         }
+
+        internal void SetStatusOfTableAtIndex(int Index, byte Status)
+        {
+            if (ContainedInAssignedTables(AllTables[Index].GetTableID()))
+            {
+                switch (AllTables[Index].GetCurrentStatus())
+                {
+                    case 1:
+                        TableButtons[Index].BackColor = Color.Green;
+                        break;
+                    case 2:
+                        TableButtons[Index].BackColor = Color.Yellow;
+                        break;
+                    case 3:
+                        TableButtons[Index].BackColor = Color.Red;
+                        break;
+                }
+                TableButtons[Index].Enabled = true;
+            }
+        }
+
         private void GreyOutUnassignedTables()
         {
             for (int i = 0; i < AllTables.Length; i++)
@@ -153,13 +174,13 @@ namespace Sprint_2_GUI_Group1_1
                 {
                     switch (AllTables[i].GetCurrentStatus())
                     {
-                        case "Clean":
+                        case 1:
                             TableButtons[i].BackColor = Color.Green;
                             break;
-                        case "Occupied":
+                        case 2:
                             TableButtons[i].BackColor = Color.Yellow;
                             break;
-                        case "Needs Attention":
+                        case 3:
                             TableButtons[i].BackColor = Color.Red;
                             break;
                     }
@@ -169,6 +190,20 @@ namespace Sprint_2_GUI_Group1_1
         }
 
         // GUI Button Methods Contained Below
+
+        private void BackToMenu_Click(object sender, EventArgs e)
+        {
+            Hide();
+            MainMenu.Show();
+        }
+
+        private void ToCurrentOrders_Click(object sender, EventArgs e)
+        {
+            CurrentOrderDisplay.Show();
+            CurrentOrderDisplay.DisplayOnFIFOs();
+            Hide();
+        }
+
         private void TableA1_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table1A"))
@@ -475,17 +510,6 @@ namespace Sprint_2_GUI_Group1_1
                 OrderOverview.SetCurrentEmployee(CurrentEmployee);
                 OrderOverview.SetTable(AllTables[27]);
             }
-        }
-        private void BackToMenu_Click(object sender, EventArgs e)
-        {
-            Hide();
-            MainMenu.Show();
-        }
-
-        private void ToCurrentOrders_Click(object sender, EventArgs e)
-        {
-            CurrentOrderDisplay.Show();
-            Hide();
         }
     }
 }

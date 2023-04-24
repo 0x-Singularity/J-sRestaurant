@@ -22,6 +22,7 @@ namespace Sprint_2_GUI_Group1_1
         private OrderOverview OrderOverview;
         private CurrentOrderDisplay CurrentOrderDisplay;
         private CustomizationMenu CustomizationMenu;
+        private EmployeeInfoReader EmployeeInfoReader;
 
         //Constructor
         internal ScreenHost()
@@ -88,10 +89,7 @@ namespace Sprint_2_GUI_Group1_1
             OrderOverview = new OrderOverview();
             CurrentOrderDisplay = new CurrentOrderDisplay();
             CustomizationMenu = new CustomizationMenu();
-            //OrderCustomization = new OrderCustomization();
-                //If I cant figure out how to get all other sub menus to display there
-            //OrderAppetizer = new OrderAppetizer();
-            //...
+            EmployeeInfoReader = new EmployeeInfoReader();
         }
 
         //Loads the screen
@@ -110,6 +108,7 @@ namespace Sprint_2_GUI_Group1_1
             CurrentOrderDisplay.ScreenPointer(OrderOverview);
             CurrentOrderDisplay.ScreenPointer2(EmployeeMenu);
             CustomizationMenu.ScreenPointer(OrderOverview);
+            EmployeeInfoReader.ScreenPointer(EmployeeLogin);
             
             //To add a new screen, you need the pointers to the screens that screen interacts with
             //NextScreenToAdd.NSTAScreenPointer1(ScreenToPointTo);

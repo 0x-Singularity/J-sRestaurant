@@ -35,13 +35,15 @@ namespace Sprint_2_GUI_Group1_1
         internal void DisplayOnFIFOs()
         {
             List<Order> OrderList = OrderOverview.CurrentOrders;
-            for (int i = 0; i < FIFOs.Count; i++)
+            for (int i = 0; i < 5; i++)
             {
                 FIFOs[i].Text = "Order #: ";
-                if (OrderList.Count < i && OrderList.Count - i -1 > 0)
+                if (OrderList.Count - i > 0)
                 {
-                    FIFOs[i].Text += "" + OrderList[i].GetID();
+                    FIFOs[i].Text += OrderList[i].GetID();
+                    FIFOs[i].Show();
                 }
+                else FIFOs[i].Hide();
             }
         }
 
@@ -49,6 +51,13 @@ namespace Sprint_2_GUI_Group1_1
         {
             EmployeeMenu.Show();
             Hide();
+        }
+
+        private void FIFO1CompleteOrder_Click(object sender, EventArgs e)
+        {
+            List<Order> OrderList = OrderOverview.CurrentOrders;
+            if (OrderList.Count > 0) OrderList.RemoveAt(0);
+            DisplayOnFIFOs();
         }
     }
 }

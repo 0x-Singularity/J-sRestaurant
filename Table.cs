@@ -6,35 +6,34 @@ namespace Sprint_2_GUI_Group1_1
     internal class Table
     {
         private string TableID;
-        private string CurrentStatus;
+        private int Index;
+        private byte CurrentStatus;
+        //1 = Clean
+        //2 = Occupied
+        //3 = Needs Attention
         private Order CurrentOrder;
-        public Table(string Status, string TableID)
+        public Table(byte Status, string TableID, int Index)
         {
             ChangeTableStatus(Status);
             this.TableID = TableID;
+            this.Index = Index;
         }
-        public Table(string Status, string TableID, Order Order)
+        public Table(byte Status, string TableID, Order Order, int Index)
         {
             ChangeTableStatus(Status);
             this.TableID = TableID;
             CurrentOrder = Order;
+            this.Index = Index;
         }
-        public void ChangeTableStatus(string Status)
+        public void ChangeTableStatus(byte Status)
         {
-            if (Status.Equals("Clean") || Status.Equals("Occupied") || Status.Equals("Needs Attention"))
-            {
-                CurrentStatus = Status;
-            }
-            else
-            {
-                throw new Exception("Error: Table status could not be changed.");
-            }
+            CurrentStatus = Status;
         }
         public string GetTableID()
         {
             return TableID;
         }
-        public string GetCurrentStatus()
+        public byte GetCurrentStatus()
         {
             return CurrentStatus;
         }
@@ -45,6 +44,10 @@ namespace Sprint_2_GUI_Group1_1
         public Order GetOrder()
         {
             return CurrentOrder;
+        }
+        public int GetIndex()
+        {
+            return Index;
         }
         public bool HasOrder()
         {
