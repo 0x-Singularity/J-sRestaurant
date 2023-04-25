@@ -8,10 +8,7 @@ namespace Sprint_2_GUI_Group1_1
         public Busboy(string Name, int Password) : base(Name, Password) { }
         public override void ChangeTableStatus(Table AssignedTable, byte Status)
         {
-            if (Status == 0)
-            {
-                AssignedTable.ChangeTableStatus("Clean");
-            }
+            AssignedTable.ChangeTableStatus(Status);
         }
     }
 }

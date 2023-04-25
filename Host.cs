@@ -8,14 +8,7 @@ namespace Sprint_2_GUI_Group1_1
         public Host(string Name, int Password) : base(Name, Password) { }
         public override void ChangeTableStatus(Table AssignedTable, byte Status)
         {
-            if (Status == 0)
-            {
-                AssignedTable.ChangeTableStatus("Clean");
-            }
-            else if (Status == 1)
-            {
-                AssignedTable.ChangeTableStatus("Occupied");
-            }
+            AssignedTable.ChangeTableStatus(Status);
         }
     }
 }

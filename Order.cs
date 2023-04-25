@@ -9,9 +9,7 @@ namespace Sprint_2_GUI_Group1_1
         private static int OrderNum = 1;
         private int OrderID;
         private string Status;
-        private bool New = false;
-        private bool InProgress = false;
-        private bool Complete = false;
+        private Table AttachedToTableXY;
         public Order()
         {
             OrderID = OrderNum++;
@@ -21,10 +19,31 @@ namespace Sprint_2_GUI_Group1_1
         {
             return OrderID;
         }
+        public string GetStatus()
+        {
+            return Status;
+        }
+        public void SetTable(Table T)
+        {
+            AttachedToTableXY = T;
+        }
         public void AddItemToOrder(int ItemID)
         {
             Menu menu = new Menu();
             OrderItems.Add(menu.FindItem(ItemID));
+        }
+        public void AddItemToOrder(string ItemName)
+        {
+            Menu menu = new Menu();
+            OrderItems.Add(menu.FindItem(ItemName));
+        }
+        public void AddItemToOrder(Item ItemToAdd)
+        {
+            OrderItems.Add(ItemToAdd);
+        }
+        public void ChangeOrderTableStatus()
+        {
+            AttachedToTableXY.ChangeTableStatus(3);
         }
         public void RemoveItemFromOrder(Item ItemToRemove)
         {
@@ -51,16 +70,27 @@ namespace Sprint_2_GUI_Group1_1
         }
         public void ChangeOrderStatus()
         {
-            if (New)
+            if (Status == null)
             {
-                InProgress = true;
-                New = false;
+                Status = "New";
             }
-            else if (InProgress)
+            else if (Status == "New")
             {
-                Complete = true;
-                InProgress = false;
+                Status = "Complete";
             }
+        }
+        public List<Item> GetList()
+        {
+            return OrderItems;
+        }
+        public override string ToString()
+        {
+            string Holder = "";
+            for (int i = 0; i < OrderItems.Count; i++)
+            {
+                Holder += "\n" + OrderItems[i].GetName();
+            }
+            return Holder;
         }
     }
 }

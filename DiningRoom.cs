@@ -14,10 +14,11 @@ namespace Sprint_2_GUI_Group1_1
     {
         private MenuForEmployee MainMenu;
         private OrderOverview OrderOverview;
+        private CurrentOrderDisplay CurrentOrderDisplay;
         private FloorStaff CurrentEmployee;
         private string[] ListOfAssignedTables;
         private Table[] AllTables = new Table[28];
-        private Button[] TableButtons = new Button[28];
+        internal Button[] TableButtons = new Button[28];
         public DiningRoom()
         {
             InitializeComponent();
@@ -33,6 +34,12 @@ namespace Sprint_2_GUI_Group1_1
             this.OrderOverview = OrderOverview;
             this.OrderOverview.SetCurrentEmployee(CurrentEmployee);
         }
+
+        internal void ScreenPointer3(CurrentOrderDisplay Pointer)
+        {
+            CurrentOrderDisplay = Pointer;
+        }
+
         private void FillAllTablesAndButtons()
         {
             int Counter = -1;
@@ -72,7 +79,7 @@ namespace Sprint_2_GUI_Group1_1
                             Counter++;
                             break;
                     }
-                    AllTables[Counter] = new Table("Clean", Temp);
+                    AllTables[Counter] = new Table(1, Temp, Counter);
                     Temp = Tempy;
                 }
             }
@@ -126,6 +133,27 @@ namespace Sprint_2_GUI_Group1_1
             }
             return false;
         }
+
+        internal void SetStatusOfTableAtIndex(int Index, byte Status)
+        {
+            if (ContainedInAssignedTables(AllTables[Index].GetTableID()))
+            {
+                switch (AllTables[Index].GetCurrentStatus())
+                {
+                    case 1:
+                        TableButtons[Index].BackColor = Color.Green;
+                        break;
+                    case 2:
+                        TableButtons[Index].BackColor = Color.Yellow;
+                        break;
+                    case 3:
+                        TableButtons[Index].BackColor = Color.Red;
+                        break;
+                }
+                TableButtons[Index].Enabled = true;
+            }
+        }
+
         private void GreyOutUnassignedTables()
         {
             for (int i = 0; i < AllTables.Length; i++)
@@ -138,7 +166,7 @@ namespace Sprint_2_GUI_Group1_1
             }
             ShowActiveStatusTables();
         }
-        private void ShowActiveStatusTables()
+        internal void ShowActiveStatusTables()
         {
             for (int i = 0; i < AllTables.Length; i++)
             {
@@ -146,13 +174,13 @@ namespace Sprint_2_GUI_Group1_1
                 {
                     switch (AllTables[i].GetCurrentStatus())
                     {
-                        case "Clean":
+                        case 1:
                             TableButtons[i].BackColor = Color.Green;
                             break;
-                        case "Occupied":
+                        case 2:
                             TableButtons[i].BackColor = Color.Yellow;
                             break;
-                        case "Needs Attention":
+                        case 3:
                             TableButtons[i].BackColor = Color.Red;
                             break;
                     }
@@ -162,14 +190,42 @@ namespace Sprint_2_GUI_Group1_1
         }
 
         // GUI Button Methods Contained Below
+
+        private void BackToMenu_Click(object sender, EventArgs e)
+        {
+            Hide();
+            MainMenu.Show();
+        }
+
+        private void ToCurrentOrders_Click(object sender, EventArgs e)
+        {
+            CurrentOrderDisplay.Show();
+            CurrentOrderDisplay.DisplayOnFIFOs();
+            Hide();
+        }
+
+        private void TableClickFunction(int Index)
+        {
+            OrderOverview.Show();
+            OrderOverview.SetCurrentEmployee(CurrentEmployee);
+            OrderOverview.SetTable(AllTables[Index]);
+            if (AllTables[Index].GetOrder() == null)
+            {
+                AllTables[Index].NewOrder();
+                OrderOverview.SetOrder(AllTables[Index].GetOrder());
+            }
+            if (AllTables[Index].GetOrder().GetStatus() == "Complete")
+            {
+                OrderOverview.ChangeButton();
+            }
+        }
+
         private void TableA1_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table1A"))
             {
                 Hide();
-                OrderOverview.Show();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[0]);
+                TableClickFunction(0);
             }
         }
 
@@ -179,8 +235,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[1]);
+                TableClickFunction(4);
             }
         }
 
@@ -190,8 +245,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[2]);
+                TableClickFunction(8);
             }
         }
 
@@ -201,8 +255,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[3]);
+                TableClickFunction(12);
             }
         }
 
@@ -212,8 +265,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[4]);
+                TableClickFunction(16);
             }
         }
 
@@ -223,8 +275,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[5]);
+                TableClickFunction(22);
             }
         }
 
@@ -234,8 +285,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[6]);
+                TableClickFunction(1);
             }
         }
 
@@ -245,8 +295,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[7]);
+                TableClickFunction(5);
             }
         }
 
@@ -256,8 +305,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[8]);
+                TableClickFunction(9);
             }
         }
 
@@ -267,8 +315,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[9]);
+                TableClickFunction(13);
             }
         }
 
@@ -278,8 +325,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[10]);
+                TableClickFunction(17);
             }
         }
 
@@ -289,8 +335,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[11]);
+                TableClickFunction(23);
             }
         }
 
@@ -300,8 +345,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[12]);
+                TableClickFunction(18);
             }
         }
 
@@ -311,8 +355,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[13]);
+                TableClickFunction(24);
             }
         }
 
@@ -322,8 +365,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[14]);
+                TableClickFunction(19);
             }
         }
 
@@ -333,8 +375,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[15]);
+                TableClickFunction(25);
             }
         }
 
@@ -344,8 +385,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[16]);
+                TableClickFunction(2);
             }
         }
 
@@ -355,8 +395,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[17]);
+                TableClickFunction(6);
             }
         }
 
@@ -366,8 +405,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[18]);
+                TableClickFunction(10);
             }
         }
 
@@ -377,8 +415,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[19]);
+                TableClickFunction(14);
             }
         }
 
@@ -388,8 +425,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[20]);
+                TableClickFunction(20);
             }
         }
 
@@ -399,8 +435,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[21]);
+                TableClickFunction(26);
             }
         }
 
@@ -410,8 +445,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[22]);
+                TableClickFunction(3);
             }
         }
 
@@ -421,8 +455,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[23]);
+                TableClickFunction(7);
             }
         }
 
@@ -432,8 +465,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[24]);
+                TableClickFunction(11);
             }
         }
 
@@ -443,8 +475,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[25]);
+                TableClickFunction(15);
             }
         }
 
@@ -454,8 +485,7 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[26]);
+                TableClickFunction(21);
             }
         }
 
@@ -465,14 +495,8 @@ namespace Sprint_2_GUI_Group1_1
             {
                 OrderOverview.Show();
                 Hide();
-                OrderOverview.SetCurrentEmployee(CurrentEmployee);
-                OrderOverview.SetTable(AllTables[27]);
+                TableClickFunction(27);
             }
-        }
-        private void BackToMenu_Click(object sender, EventArgs e)
-        {
-            Hide();
-            MainMenu.Show();
         }
     }
 }

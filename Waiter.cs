@@ -8,18 +8,7 @@ namespace Sprint_2_GUI_Group1_1
         public Waiter(string Name, int Password) : base(Name, Password) { }
         public override void ChangeTableStatus(Table AssignedTable, byte Status)
         {
-            if (Status == 0)
-            {
-                AssignedTable.ChangeTableStatus("Clean");
-            }
-            else if (Status == 1)
-            {
-                AssignedTable.ChangeTableStatus("Occupied");
-            }
-            else
-            {
-                AssignedTable.ChangeTableStatus("Needs Attention");
-            }
+            AssignedTable.ChangeTableStatus(Status);
         }
         public void CreateNewOrder(Table T)
         {
