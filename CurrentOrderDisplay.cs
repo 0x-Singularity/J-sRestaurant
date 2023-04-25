@@ -45,6 +45,27 @@ namespace Sprint_2_GUI_Group1_1
                 }
                 else FIFOs[i].Hide();
             }
+            if (OrderList.Count > 0)
+            {
+                List<Item> CurrentOrderItems = OrderList[0].GetList();
+                string Names = "Order #: " + OrderList[0].GetID() + "\n";
+                if (CurrentOrderItems.Count > 0)
+                {
+                    foreach (Item I in CurrentOrderItems)
+                    {
+                        Names += I.GetName() + "\n";
+                    }
+                    FirstOrder.Text = Names;
+                }
+                else
+                {
+                    FirstOrder.Text = "There are no current orders!";
+                }
+            }
+            else
+            {
+                FirstOrder.Text = "There are no current orders!";
+            }
         }
 
         private void ToMainMenu_Click(object sender, EventArgs e)

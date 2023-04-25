@@ -113,7 +113,6 @@ namespace Sprint_2_GUI_Group1_1
         {
             SubMenuPanel.Controls.Add(CustomizationMenu);
             CustomizationMenu.ScreenPointer(this);
-            //CustomizationMenu.Show();
         }
 
         public void SetTable(Table NewTable)

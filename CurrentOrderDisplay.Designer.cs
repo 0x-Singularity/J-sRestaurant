@@ -36,6 +36,7 @@
             this.ToMainMenu = new System.Windows.Forms.Button();
             this.FIFO1CompleteOrder = new System.Windows.Forms.Button();
             this.BackgroundCurrentOrderDisplay = new System.Windows.Forms.PictureBox();
+            this.FirstOrder = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.BackgroundCurrentOrderDisplay)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,10 +116,21 @@
             this.BackgroundCurrentOrderDisplay.TabIndex = 12;
             this.BackgroundCurrentOrderDisplay.TabStop = false;
             // 
+            // FirstOrder
+            // 
+            this.FirstOrder.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.FirstOrder.Location = new System.Drawing.Point(717, 119);
+            this.FirstOrder.Name = "FirstOrder";
+            this.FirstOrder.Size = new System.Drawing.Size(300, 300);
+            this.FirstOrder.TabIndex = 13;
+            this.FirstOrder.Text = "Order #: ";
+            this.FirstOrder.UseMnemonic = false;
+            // 
             // CurrentOrderDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.FirstOrder);
             this.Controls.Add(this.FIFO1CompleteOrder);
             this.Controls.Add(this.ToMainMenu);
             this.Controls.Add(this.FIFO5);
@@ -144,5 +156,6 @@
         private Button ToMainMenu;
         private Button FIFO1CompleteOrder;
         private PictureBox BackgroundCurrentOrderDisplay;
+        private Label FirstOrder;
     }
 }
