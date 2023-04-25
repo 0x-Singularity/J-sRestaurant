@@ -119,17 +119,30 @@ namespace Sprint_2_GUI_Group1_1
         public void SetTable(Table NewTable)
         {
             this.CurrentTable = NewTable;
+            TableDisplay.Text = CurrentTable.GetTableID();
             if (!CurrentTable.HasOrder()) CurrentTable.NewOrder();
             SetOrder(CurrentTable.GetOrder());
             SetOrderLabelDisplay();
             CurrentTable.ChangeTableStatus(2);
             DiningRoomDisplay.ShowActiveStatusTables();
         }
+        
+        public void SetCurrentTableStatus()
+        {
+            CurrentTable.ChangeTableStatus(3);
+        }
+
+        public void ChangeButton()
+        {
+            SendToKitchen.Text = "Clean Table";
+            CustomizationMenu.Hide();
+        }
+
         public void SetOrder(Order NewOrder)
         {
             CurrentOrder = NewOrder;
             CustomizationMenu.SetOrder(CurrentOrder);
-            TableDisplay.Text = CurrentTable.GetTableID();
+            CurrentOrder.SetTable(CurrentTable);
             OrderNumberDisplay.Text = "Order #: " + CurrentOrder.GetID();
             EmployeeNameLabel.Text = "Employee Name: " + CurrentEmployee.GetEmployeeName();
         }
@@ -154,7 +167,6 @@ namespace Sprint_2_GUI_Group1_1
         {
             Hide();
             DiningRoomDisplay.Show();
-            DiningRoomDisplay.ShowActiveStatusTables();
         }
 
         private void ToCategories_Click(object sender, EventArgs e)
@@ -164,13 +176,25 @@ namespace Sprint_2_GUI_Group1_1
 
         private void SendToKitchen_Click(object sender, EventArgs e)
         {
-            CurrentOrders.Add(CurrentOrder);
-            CurrentOrder.ChangeOrderStatus();
-            DiningRoomDisplay.ShowActiveStatusTables();
-            DiningRoomDisplay.SetStatusOfTableAtIndex(CurrentTable.GetIndex(), 2);
-            CurrentTable.ChangeTableStatus(2);
-            DiningRoomDisplay.Show();
-            Hide();
+            if (CurrentOrder.GetStatus() == "Complete") 
+            {
+                CurrentTable.ChangeTableStatus(1);
+                CurrentTable.SetNullOrder();
+                DiningRoomDisplay.ShowActiveStatusTables();
+                SendToKitchen.Text = "Send and Pay";
+                CustomizationMenu.Show();
+                DiningRoomDisplay.Show();
+                Hide();
+            }
+            else
+            {
+                CurrentOrders.Add(CurrentOrder);
+                CurrentOrder.ChangeOrderStatus();
+                DiningRoomDisplay.SetStatusOfTableAtIndex(CurrentTable.GetIndex(), 2);
+                DiningRoomDisplay.ShowActiveStatusTables();
+                DiningRoomDisplay.Show();
+                Hide();
+            }
         }
     }
 }

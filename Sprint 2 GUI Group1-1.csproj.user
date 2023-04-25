@@ -25,5 +25,8 @@
     <Compile Update="CurrentOrderDisplay.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="EmployeeInfoReader.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

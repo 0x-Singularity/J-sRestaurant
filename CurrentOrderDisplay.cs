@@ -56,7 +56,12 @@ namespace Sprint_2_GUI_Group1_1
         private void FIFO1CompleteOrder_Click(object sender, EventArgs e)
         {
             List<Order> OrderList = OrderOverview.CurrentOrders;
-            if (OrderList.Count > 0) OrderList.RemoveAt(0);
+            if (OrderList.Count > 0)
+            {
+                OrderList[0].ChangeOrderStatus();
+                OrderList[0].ChangeOrderTableStatus();
+                OrderList.RemoveAt(0);
+            }
             DisplayOnFIFOs();
         }
     }

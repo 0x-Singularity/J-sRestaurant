@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.ToMainMenu = new System.Windows.Forms.Button();
-            this.ToCategories = new System.Windows.Forms.Button();
-            this.AddItemToOrder = new System.Windows.Forms.Button();
             this.OrderNumberDisplay = new System.Windows.Forms.Label();
             this.SubMenuPanel = new System.Windows.Forms.Panel();
             this.BackgroundOrderOverview = new System.Windows.Forms.PictureBox();
@@ -47,32 +45,13 @@
             // 
             // ToMainMenu
             // 
-            this.ToMainMenu.Location = new System.Drawing.Point(893, 620);
+            this.ToMainMenu.Location = new System.Drawing.Point(905, 620);
             this.ToMainMenu.Name = "ToMainMenu";
             this.ToMainMenu.Size = new System.Drawing.Size(100, 69);
             this.ToMainMenu.TabIndex = 0;
             this.ToMainMenu.Text = "Main Menu";
             this.ToMainMenu.UseVisualStyleBackColor = true;
             this.ToMainMenu.Click += new System.EventHandler(this.ToMainMenu_Click);
-            // 
-            // ToCategories
-            // 
-            this.ToCategories.Location = new System.Drawing.Point(999, 620);
-            this.ToCategories.Name = "ToCategories";
-            this.ToCategories.Size = new System.Drawing.Size(100, 69);
-            this.ToCategories.TabIndex = 1;
-            this.ToCategories.Text = "Back to Category Menu";
-            this.ToCategories.UseVisualStyleBackColor = true;
-            this.ToCategories.Click += new System.EventHandler(this.ToCategories_Click);
-            // 
-            // AddItemToOrder
-            // 
-            this.AddItemToOrder.Location = new System.Drawing.Point(1105, 620);
-            this.AddItemToOrder.Name = "AddItemToOrder";
-            this.AddItemToOrder.Size = new System.Drawing.Size(100, 69);
-            this.AddItemToOrder.TabIndex = 2;
-            this.AddItemToOrder.Text = "Add Item to Order";
-            this.AddItemToOrder.UseVisualStyleBackColor = true;
             // 
             // OrderNumberDisplay
             // 
@@ -187,8 +166,6 @@
             this.Controls.Add(this.EmployeeNameLabel);
             this.Controls.Add(this.SubMenuPanel);
             this.Controls.Add(this.OrderNumberDisplay);
-            this.Controls.Add(this.AddItemToOrder);
-            this.Controls.Add(this.ToCategories);
             this.Controls.Add(this.ToMainMenu);
             this.Controls.Add(this.BackgroundOrderOverview);
             this.Name = "OrderOverview";
@@ -201,8 +178,6 @@
         #endregion
 
         private Button ToMainMenu;
-        private Button ToCategories;
-        private Button AddItemToOrder;
         private Label OrderNumberDisplay;
         private Panel SubMenuPanel;
         private PictureBox BackgroundOrderOverview;

@@ -13,22 +13,22 @@ namespace Sprint_2_GUI_Group1_1
     public partial class EmployeeInfoReader : UserControl
     {
         private string FilePath;
-        private EmployeeLoginScreen ELS;
+        private EmployeeLoginScreen EmployeeLogin;
         public EmployeeInfoReader()
         {
             InitializeComponent();
         }
 
-        public void ScreenPointer(EmployeeLoginScreen ELS)
+        public void ScreenPointer(EmployeeLoginScreen Pointer)
         {
-            this.ELS = ELS;
+            this.EmployeeLogin = Pointer;
         }
 
         private void Submit_Click(object sender, EventArgs e)
         {
             //Read document from Filename
+            EmployeeLogin.Show();
             Hide();
-            ELS.Show();
         }
 
         private void Filename_TextChanged(object sender, EventArgs e)

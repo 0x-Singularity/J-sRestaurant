@@ -76,6 +76,40 @@ namespace Sprint_2_GUI_Group1_1
             W3.AssignTables(true, AssignedTablesW3);
             EmployeeList.Add(W3);
 
+            //Waiter 4 (to do bug fixing)
+            Waiter W4 = new Waiter("TEST EMPLOYEE", 9999);
+            string[] AssignedTablesW4 = new string[28];
+            AssignedTablesW4[0] = "Table1A";
+            AssignedTablesW4[1] = "Table2A";
+            AssignedTablesW4[2] = "Table3A";
+            AssignedTablesW4[3] = "Table4A";
+            AssignedTablesW4[4] = "Table5A";
+            AssignedTablesW4[5] = "Table1B";
+            AssignedTablesW4[6] = "Table2B";
+            AssignedTablesW4[7] = "Table3B";
+            AssignedTablesW4[8] = "Table4B";
+            AssignedTablesW4[9] = "Table6A";
+            AssignedTablesW4[10] = "Table5B";
+            AssignedTablesW4[11] = "Table6B";
+            AssignedTablesW4[12] = "Table5C";
+            AssignedTablesW4[13] = "Table6C";
+            AssignedTablesW4[14] = "Table5D";
+            AssignedTablesW4[15] = "Table6D";
+            AssignedTablesW4[16] = "Table5E";
+            AssignedTablesW4[17] = "Table6E";
+            AssignedTablesW4[18] = "Table6F";
+            AssignedTablesW4[19] = "Table1E";
+            AssignedTablesW4[20] = "Table2E";
+            AssignedTablesW4[21] = "Table3E";
+            AssignedTablesW4[22] = "Table4E";
+            AssignedTablesW4[23] = "Table1F";
+            AssignedTablesW4[24] = "Table2F";
+            AssignedTablesW4[25] = "Table3F";
+            AssignedTablesW4[26] = "Table4F";
+            AssignedTablesW4[27] = "Table5F";
+            W4.AssignTables(true, AssignedTablesW4);
+            EmployeeList.Add(W4);
+
             //Cook 1
             Cook C1 = new Cook("Mark", 4444);
             EmployeeList.Add(C1);
@@ -119,11 +153,13 @@ namespace Sprint_2_GUI_Group1_1
             DisplayPanel.Controls.Add(DiningRoomDisplay);
             DisplayPanel.Controls.Add(OrderOverview);
             DisplayPanel.Controls.Add(CurrentOrderDisplay);
+            DisplayPanel.Controls.Add(EmployeeInfoReader);
 
             DiningRoomDisplay.Hide();
             EmployeeMenu.Hide();
             OrderOverview.Hide();
             CurrentOrderDisplay.Hide();
+            EmployeeLogin.Hide();
 
             //To add a new screen, you need to add it to the panel displayed on ScreenHost
             //DisplayPanel.Controls.Add(NextScreenToAdd);

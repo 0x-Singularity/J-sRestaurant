@@ -9,6 +9,7 @@ namespace Sprint_2_GUI_Group1_1
         private static int OrderNum = 1;
         private int OrderID;
         private string Status;
+        private Table AttachedToTableXY;
         public Order()
         {
             OrderID = OrderNum++;
@@ -21,6 +22,10 @@ namespace Sprint_2_GUI_Group1_1
         public string GetStatus()
         {
             return Status;
+        }
+        public void SetTable(Table T)
+        {
+            AttachedToTableXY = T;
         }
         public void AddItemToOrder(int ItemID)
         {
@@ -35,6 +40,10 @@ namespace Sprint_2_GUI_Group1_1
         public void AddItemToOrder(Item ItemToAdd)
         {
             OrderItems.Add(ItemToAdd);
+        }
+        public void ChangeOrderTableStatus()
+        {
+            AttachedToTableXY.ChangeTableStatus(3);
         }
         public void RemoveItemFromOrder(Item ItemToRemove)
         {

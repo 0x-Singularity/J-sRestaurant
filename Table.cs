@@ -41,6 +41,10 @@ namespace Sprint_2_GUI_Group1_1
         {
             CurrentOrder = new Order();
         }
+        public void SetNullOrder()
+        {
+            CurrentOrder = null;
+        }
         public Order GetOrder()
         {
             return CurrentOrder;
