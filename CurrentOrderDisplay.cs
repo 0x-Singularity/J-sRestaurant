@@ -66,6 +66,14 @@ namespace Sprint_2_GUI_Group1_1
             {
                 FirstOrder.Text = "There are no current orders!";
             }
+            if (EmployeeMenu.GetCurrentEmployee() is Cook)
+            {
+                FIFO1CompleteOrder.Enabled = true;
+            }
+            else
+            {
+                FIFO1CompleteOrder.Enabled = false;
+            }
         }
 
         private void ToMainMenu_Click(object sender, EventArgs e)

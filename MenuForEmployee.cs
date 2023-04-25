@@ -72,6 +72,10 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        internal Employee GetCurrentEmployee()
+        {
+            return CurrentEmployee;
+        }
         private void ToCurrentOrders_Click(object sender, EventArgs e)
         {
             CurrentOrderDisplay.Show();
