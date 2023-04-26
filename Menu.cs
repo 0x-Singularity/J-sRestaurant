@@ -8,12 +8,23 @@ namespace Sprint_2_GUI_Group1_1
 {
     internal class Menu
     {
-        //Menu needs to be able to change in case manager needs to add something
+        /// <summary>
+        /// Attributes:
+        ///  MenuItems (protected List of Item objects)
+        /// </summary>
         protected List<Item> MenuItems = new List<Item>();
+
+        /// <summary>
+        /// Menu Constructor
+        /// </summary>
         internal Menu()
         {
             FillMenu();
         }
+
+        /// <summary>
+        /// Fills the MenuItems List of Item objects with Item objects.
+        /// </summary>
         public void FillMenu()
         {
             //Entree, total: 4
@@ -23,10 +34,10 @@ namespace Sprint_2_GUI_Group1_1
             MenuItems.Add(new Item("Grilled Pork Chops", 11.00f, false, "Entree"));     //4
 
             //Sides, total: 4
-            MenuItems.Add(new Item("Curly Fries", 2.50f, false, "Side"));              //5
-            MenuItems.Add(new Item("Wing Chips", 2.50f, false, "Side"));               //6
-            MenuItems.Add(new Item("Creamy Cabbage Slaw", 2.50f, false, "Side"));      //7
-            MenuItems.Add(new Item("Mashed Potatoes", 2.50f, false, "Side"));          //8
+            MenuItems.Add(new Item("Curly Fries", 2.50f, false, "Side"));               //5
+            MenuItems.Add(new Item("Wing Chips", 2.50f, false, "Side"));                //6
+            MenuItems.Add(new Item("Creamy Cabbage Slaw", 2.50f, false, "Side"));       //7
+            MenuItems.Add(new Item("Mashed Potatoes", 2.50f, false, "Side"));           //8
 
             //Sandwich, total: 4
             MenuItems.Add(new Item("Chicken BLT&A", 10.00f, false, "Sandwich"));        //9
@@ -47,6 +58,12 @@ namespace Sprint_2_GUI_Group1_1
             MenuItems.Add(new Item("Bottled Water", 2.00f, false, "Beverage"));         //20
 
         }
+
+        /// <summary>
+        /// Returns an Item object array of a specified Category string.
+        /// </summary>
+        /// <param name="Category"></param>
+        /// <returns></returns>
         public Item[] GetArrayOfCategory(string Category)
         {
             List<Item> ListOfItems = new List<Item>();
@@ -59,10 +76,23 @@ namespace Sprint_2_GUI_Group1_1
             }
             return ListOfItems.ToArray<Item>();
         }
+
+        /// <summary>
+        /// Returns the Item at the passed in ItemID integer.
+        /// </summary>
+        /// <param name="ItemID"></param>
+        /// <returns></returns>
         public Item FindItem(int ItemID)
         {
             return MenuItems[ItemID];
         }
+
+        /// <summary>
+        /// Returns the Item containing the passed in ItemName string.
+        /// </summary>
+        /// <param name="ItemName"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public Item FindItem(string ItemName)
         {
             foreach (Item I in MenuItems)
@@ -73,14 +103,6 @@ namespace Sprint_2_GUI_Group1_1
                 }
             }
             throw new Exception("Specified item to look for is not in current menu.");
-        }
-        public void AddItem(Item ItemToAdd)
-        {
-
-        }
-        public void RemoveItem(Item ItemToRemove)
-        {
-
         }
     }
 }

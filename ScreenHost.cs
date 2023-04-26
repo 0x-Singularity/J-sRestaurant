@@ -13,9 +13,16 @@ namespace Sprint_2_GUI_Group1_1
 {
     public partial class ScreenHost : Form
     {
-        //Attributes
-        private List<Employee> EmployeeList = new List<Employee>();
-        private Manager CurrentManager;
+        /// <summary>
+        /// Attributes:
+        ///  EmployeeLogin (private pointer object of type EmployeeLoginScreen)
+        ///  EmployeeMenu (private pointer object of type MenuForEmployee)
+        ///  DiningRoomDisplay (private pointer object of type DiningRoom)
+        ///  OrderOverview (private pointer object of type OrderOverview)
+        ///  CurrentOrderDisplay (private pointer object of type CurrentOrderDisplay)
+        ///  CustomizationMenu (private pointer object of type CustomizationMenu)
+        ///  EmployeeInfoReader (private pointer object of type EmployeeInfoReader)
+        /// </summary>
         private EmployeeLoginScreen EmployeeLogin;
         private MenuForEmployee EmployeeMenu;
         private DiningRoom DiningRoomDisplay;
@@ -23,12 +30,16 @@ namespace Sprint_2_GUI_Group1_1
         private CurrentOrderDisplay CurrentOrderDisplay;
         private CustomizationMenu CustomizationMenu;
         private EmployeeInfoReader EmployeeInfoReader;
+        //To create a new screen, you need a pointer
+        //private Screen NewScreen;
 
-        //Constructor
+        /// <summary>
+        /// ScreenHost Constructor
+        /// </summary>
         internal ScreenHost()
         {
             InitializeComponent();
-            //Temp Code
+            /*//Temp Code
 
             //Waiter 1
             Waiter W1 = new Waiter("John", 1111);
@@ -115,18 +126,25 @@ namespace Sprint_2_GUI_Group1_1
             EmployeeList.Add(C1);
             //End of Temp Code
 
-            Manager Dave = new Manager(EmployeeList, "Dave1234", "1234");
-            CurrentManager = Dave;
-            EmployeeLogin = new EmployeeLoginScreen(Dave);
+            Manager M1 = new Manager(EmployeeList, "TEST1234", "1234");
+            CurrentManager = M1;*/
+            EmployeeLogin = new EmployeeLoginScreen();
             EmployeeMenu = new MenuForEmployee();
             DiningRoomDisplay = new DiningRoom();
             OrderOverview = new OrderOverview();
             CurrentOrderDisplay = new CurrentOrderDisplay();
             CustomizationMenu = new CustomizationMenu();
             EmployeeInfoReader = new EmployeeInfoReader();
+
+            //To add a new screen, you need the object to be created and assigned.
+            //NewScreen = new Screen()
         }
 
-        //Loads the screen
+        /// <summary>
+        /// Loads the ScreenHost object's screen.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ScreenHost_Load(object sender, EventArgs e)
         {
             EmployeeLogin.ScreenPointer(EmployeeMenu);

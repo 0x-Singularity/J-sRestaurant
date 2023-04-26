@@ -4,14 +4,26 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Sprint_2_GUI_Group1_1
 {
     public partial class DiningRoom : UserControl
     {
+        /// <summary>
+        /// Attributes:
+        ///  MainMenu (private pointer object of type MenuForEmployee)
+        ///  OrderOverview (private pointer object of type OrderOverview)
+        ///  CurrentOrderDisplay (private pointer object of type CurrentOrderDisplay)
+        ///  CurrentEmployee (private pointer object of type FloorStaff)
+        ///  ListOfAssignedTables (private string array containing table IDs)
+        ///  AllTables (private Table object array containing all Table objects)
+        ///  TableButtons (private Button object array containing all Button objects for the tables)
+        /// </summary>
         private MenuForEmployee MainMenu;
         private OrderOverview OrderOverview;
         private CurrentOrderDisplay CurrentOrderDisplay;
@@ -19,27 +31,47 @@ namespace Sprint_2_GUI_Group1_1
         private string[] ListOfAssignedTables;
         private Table[] AllTables = new Table[28];
         internal Button[] TableButtons = new Button[28];
+
+        /// <summary>
+        /// DiningRoom Constructor
+        /// </summary>
         public DiningRoom()
         {
             InitializeComponent();
             FillAllTablesAndButtons();
         }
-        internal void ScreenPointer(MenuForEmployee Screen)
+
+        /// <summary>
+        /// Points to specified object of type MenuForEmployee named Pointer, allowing screen transitions.
+        /// </summary>
+        /// <param name="Pointer"></param>
+        internal void ScreenPointer(MenuForEmployee Pointer)
         {
-            MainMenu = Screen;
+            MainMenu = Pointer;
         }
 
-        internal void ScreenPointer2(OrderOverview OrderOverview)
+        /// <summary>
+        /// Points to specified object of type OrderOverview named Pointer, allowing screen transitions.
+        /// </summary>
+        /// <param name="Pointer"></param>
+        internal void ScreenPointer2(OrderOverview Pointer)
         {
-            this.OrderOverview = OrderOverview;
+            this.OrderOverview = Pointer;
             this.OrderOverview.SetCurrentEmployee(CurrentEmployee);
         }
 
+        /// <summary>
+        /// Points to specified object of type CurrentOrderDisplay named Pointer, allowing screen transitions.
+        /// </summary>
+        /// <param name="Pointer"></param>
         internal void ScreenPointer3(CurrentOrderDisplay Pointer)
         {
             CurrentOrderDisplay = Pointer;
         }
 
+        /// <summary>
+        /// Fills the AllTables array with Table objects.
+        /// </summary>
         private void FillAllTablesAndButtons()
         {
             int Counter = -1;
@@ -113,6 +145,10 @@ namespace Sprint_2_GUI_Group1_1
             TableButtons[27] = TableF6;
         }
 
+        /// <summary>
+        /// Sets CurrentEmployee pointer to passed in FloorStaff object.
+        /// </summary>
+        /// <param name="NewEmployee"></param>
         internal void SetEmployee(FloorStaff NewEmployee)
         {
             CurrentEmployee = NewEmployee;
@@ -121,7 +157,11 @@ namespace Sprint_2_GUI_Group1_1
         }
 
 
-        //Find a table in assigned tables using a TableID
+        /// <summary>
+        /// Find a table in ListOfAssignedTables using a TableID.
+        /// </summary>
+        /// <param name="TableYX"></param>
+        /// <returns></returns>
         private bool ContainedInAssignedTables(string TableYX)
         {
             for (int i = 0; i < ListOfAssignedTables.Length; i++)
@@ -134,6 +174,11 @@ namespace Sprint_2_GUI_Group1_1
             return false;
         }
 
+        /// <summary>
+        /// Sets the status of the Table object at the corresponding index.
+        /// </summary>
+        /// <param name="Index"></param>
+        /// <param name="Status"></param>
         internal void SetStatusOfTableAtIndex(int Index, byte Status)
         {
             if (ContainedInAssignedTables(AllTables[Index].GetTableID()))
@@ -154,6 +199,9 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Greys out table Buttons that are not assigned.
+        /// </summary>
         private void GreyOutUnassignedTables()
         {
             for (int i = 0; i < AllTables.Length; i++)
@@ -166,6 +214,10 @@ namespace Sprint_2_GUI_Group1_1
             }
             ShowActiveStatusTables();
         }
+
+        /// <summary>
+        /// Shows the table Button objects that are assigned to the CurrentEmployee.
+        /// </summary>
         internal void ShowActiveStatusTables()
         {
             for (int i = 0; i < AllTables.Length; i++)
@@ -189,14 +241,22 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
-        // GUI Button Methods Contained Below
-
+        /// <summary>
+        /// Adds the functionality to the GUI button to change screens with the MainMenu object's screen.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BackToMenu_Click(object sender, EventArgs e)
         {
             Hide();
             MainMenu.Show();
         }
 
+        /// <summary>
+        /// Adds the functionality to the GUI button to change screens with the CurrentOrderDisplay object's screen.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ToCurrentOrders_Click(object sender, EventArgs e)
         {
             CurrentOrderDisplay.Show();
@@ -204,6 +264,10 @@ namespace Sprint_2_GUI_Group1_1
             Hide();
         }
 
+        /// <summary>
+        /// Abstracted method that adds the functionality of the individual table Button objects
+        /// </summary>
+        /// <param name="Index"></param>
         private void TableClickFunction(int Index)
         {
             OrderOverview.Show();
@@ -220,6 +284,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableA1
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableA1_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table1A"))
@@ -229,6 +298,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableA2
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableA2_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table2A"))
@@ -239,6 +313,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableA3
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableA3_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table3A"))
@@ -249,6 +328,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableA4
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableA4_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table4A"))
@@ -259,6 +343,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableA5
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableA5_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table5A"))
@@ -269,6 +358,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableA6
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableA6_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table6A"))
@@ -279,6 +373,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableB1
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableB1_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table1B"))
@@ -289,6 +388,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableB2
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableB2_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table2B"))
@@ -299,6 +403,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableB3
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableB3_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table3B"))
@@ -309,6 +418,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableB4
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableB4_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table4B"))
@@ -319,6 +433,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableB5
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableB5_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table5B"))
@@ -329,6 +448,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableB6
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableB6_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table6B"))
@@ -339,6 +463,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableC5
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableC5_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table5C"))
@@ -349,6 +478,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableC6
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableC6_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table6C"))
@@ -359,6 +493,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableD5
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableD5_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table5D"))
@@ -369,6 +508,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableD6
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableD6_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table6D"))
@@ -379,6 +523,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableE1
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableE1_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table1E"))
@@ -389,6 +538,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableE2
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableE2_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table2E"))
@@ -399,6 +553,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableE3
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableE3_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table3E"))
@@ -409,6 +568,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableE4
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableE4_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table4E"))
@@ -419,6 +583,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableE5
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableE5_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table5E"))
@@ -429,6 +598,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableE6
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableE6_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table6E"))
@@ -439,6 +613,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableF1
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableF1_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table1F"))
@@ -449,6 +628,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableF2
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableF2_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table2F"))
@@ -459,6 +643,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableF3
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableF3_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table3F"))
@@ -469,6 +658,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableF4
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableF4_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table4F"))
@@ -479,6 +673,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableF5
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableF5_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table5F"))
@@ -489,6 +688,11 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button for TableF6
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TableF6_Click(object sender, EventArgs e)
         {
             if (ContainedInAssignedTables("Table6F"))

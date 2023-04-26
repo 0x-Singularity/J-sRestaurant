@@ -12,6 +12,16 @@ namespace Sprint_2_GUI_Group1_1
 {
     internal partial class OrderOverview : UserControl
     {
+        /// <summary>
+        /// Attributes:
+        ///  DiningRoomDisplay (private pointer object of type DiningRoom)
+        ///  EmployeeMenu (private pointer object of type MenuForEmployee)
+        ///  CustomizationMenu (private pointer object of type Customization Menu)
+        ///  CurrentEmployee (private pointer object of type Employee)
+        ///  CurrentTable (private pointer object of type Table)
+        ///  CurrentOrder (private pointer object of type Order)
+        ///  CurrentOrders (internal pointer List containing Order objects
+        /// </summary>
         private DiningRoom DiningRoomDisplay;
         private MenuForEmployee EmployeeMenu;
         private CustomizationMenu CustomizationMenu;
@@ -19,11 +29,21 @@ namespace Sprint_2_GUI_Group1_1
         private Table CurrentTable;
         private Order CurrentOrder;
         internal List<Order> CurrentOrders = new List<Order>();
+
+        /// <summary>
+        /// OrderOverview Constructor
+        /// </summary>
         public OrderOverview()
         {
             InitializeComponent();
             BackgroundOrderOverview.Paint += new PaintEventHandler(BackgroundOrderOverview_Paint);
         }
+
+        /// <summary>
+        /// Adds the lines to the screen to differentiate the areas of the screen
+        /// </summary>
+        /// <param name="Sender"></param>
+        /// <param name="Event"></param>
         protected void BackgroundOrderOverview_Paint(object Sender, PaintEventArgs Event)
         {
             var GraphicalUnit = Event.Graphics;
@@ -33,22 +53,39 @@ namespace Sprint_2_GUI_Group1_1
             GraphicalUnit.DrawLine(Pen, 0, 24, 640, 24);
             GraphicalUnit.DrawLine(Pen, 0, 25, 640, 25);
         }
-        public void ScreenPointer(DiningRoom DRD)
+
+        /// <summary>
+        /// Points to specified object of type DiningRoom named Pointer, allowing screen transitions
+        /// </summary>
+        /// <param name="DRD"></param>
+        public void ScreenPointer(DiningRoom Pointer)
         {
-            DiningRoomDisplay = DRD;
+            DiningRoomDisplay = Pointer;
         }
 
-        public void ScreenPointer2(MenuForEmployee EmployeeMenu)
+        /// <summary>
+        /// Points to specified object of type MenuForEmployee named Pointer, allowing screen transitions
+        /// </summary>
+        /// <param name="EmployeeMenu"></param>
+        public void ScreenPointer2(MenuForEmployee Pointer)
         {
-            this.EmployeeMenu = EmployeeMenu;
+            this.EmployeeMenu = Pointer;
         }
 
+        /// <summary>
+        /// Points to specified object of type CustomizationMenu named Pointer, allowing screen transitions.
+        /// Displays this screen on the allocated Panel object of the OrderOverview screen.
+        /// </summary>
+        /// <param name="Pointer"></param>
         public void ScreenPointer3(CustomizationMenu Pointer)
         {
             CustomizationMenu = Pointer;
             DisplaySubMenuPanel();
         }
 
+        /// <summary>
+        /// Updates the order Label objects Text with accurate information.
+        /// </summary>
         internal void SetOrderLabelDisplay()
         {
             List<Item> CurrentOrderItems = CurrentOrder.GetList();
@@ -80,6 +117,11 @@ namespace Sprint_2_GUI_Group1_1
             TotalDisplay.Text += "\nTotal:       " + MakeNumberActAsMoney(Total + "");
         }
 
+        /// <summary>
+        /// Takes in a string and formats it how US currency is formatted: XX.XX
+        /// </summary>
+        /// <param name="UnformattedNumber"></param>
+        /// <returns></returns>
         private string MakeNumberActAsMoney(string UnformattedNumber)
         {
             bool HasDecimal = false;
@@ -109,12 +151,20 @@ namespace Sprint_2_GUI_Group1_1
             else return UnformattedNumber + ".00";
             return UnformattedNumber;
         }
+
+        /// <summary>
+        /// Adds the controls of and displays the CustomizationMenu object screen
+        /// </summary>
         internal void DisplaySubMenuPanel()
         {
             SubMenuPanel.Controls.Add(CustomizationMenu);
             CustomizationMenu.ScreenPointer(this);
         }
 
+        /// <summary>
+        /// Sets the object CurrentTable to the passed object
+        /// </summary>
+        /// <param name="NewTable"></param>
         public void SetTable(Table NewTable)
         {
             this.CurrentTable = NewTable;
@@ -126,17 +176,31 @@ namespace Sprint_2_GUI_Group1_1
             DiningRoomDisplay.ShowActiveStatusTables();
         }
         
+        /// <summary>
+        /// Sets the CurrentTable object's status to 3, which means "Needs Attention"
+        /// </summary>
         public void SetCurrentTableStatus()
         {
             CurrentTable.ChangeTableStatus(3);
         }
 
+        /// <summary>
+        /// changes the Send and Pay button named SendToKitchen to "Clean Table" and hides the CustomizationMenu object screen
+        /// </summary>
         public void ChangeButton()
         {
             SendToKitchen.Text = "Clean Table";
             CustomizationMenu.Hide();
         }
 
+        /// <summary>
+        /// Sets the Current order to the passed object.
+        /// Passes the passed in object to the CustomizationMenu object's SetOrder method.
+        /// Sets the table of the CurrentOrder object to the CurrentTable object
+        /// Sets the Text of the OrderNumberDisplay Label object to "Order #: " and the CurrentOrder object's Order ID
+        /// Sets the Text of the EmployeeNameLabel Label object to "Employee Name: " and the CurrentEmployee object's Name
+        /// </summary>
+        /// <param name="NewOrder"></param>
         public void SetOrder(Order NewOrder)
         {
             CurrentOrder = NewOrder;
@@ -146,33 +210,62 @@ namespace Sprint_2_GUI_Group1_1
             EmployeeNameLabel.Text = "Employee Name: " + CurrentEmployee.GetEmployeeName();
         }
 
+        /// <summary>
+        /// Returns the CurrentOrder object
+        /// </summary>
+        /// <returns></returns>
         public Order GetOrder()
         {
             return CurrentOrder;
         }
 
+        /// <summary>
+        /// Sets the CurrentEmployee pointer to the passed in object
+        /// </summary>
+        /// <param name="NewEmployee"></param>
         public void SetCurrentEmployee(Employee NewEmployee)
         {
             CurrentEmployee = NewEmployee;
         }
 
+        /// <summary>
+        /// Adds the functionality to the GUI button to change screens with the MenuForEmployee object's screen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ToMainMenu_Click(object sender, EventArgs e)
         {
             Hide();
             EmployeeMenu.Show();
         }
 
+        /// <summary>
+        /// Adds the functionality to the GUI button to change screens with the DiningRoom object's screen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ToDiningRoom_Click(object sender, EventArgs e)
         {
             Hide();
             DiningRoomDisplay.Show();
         }
 
+        /// <summary>
+        /// Adds the functionality to the GUI button to change screens with the CustomizationMenu object's screen through the use of the DisplaySubMenuPanel method
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ToCategories_Click(object sender, EventArgs e)
         {
             DisplaySubMenuPanel();
         }
 
+        /// <summary>
+        /// Adds the functionality to the GUI button to submit the CurrentOrder object to the kitchen
+        /// Adds the functionality to the GUI button the virtually "Clean Table"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SendToKitchen_Click(object sender, EventArgs e)
         {
             if (CurrentOrder.GetStatus() == "Complete") 

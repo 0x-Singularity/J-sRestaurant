@@ -37,12 +37,14 @@
             // 
             // WhereFile
             // 
-            this.WhereFile.Location = new System.Drawing.Point(480, 290);
+            this.WhereFile.AutoEllipsis = true;
+            this.WhereFile.Location = new System.Drawing.Point(390, 265);
             this.WhereFile.Name = "WhereFile";
-            this.WhereFile.Size = new System.Drawing.Size(320, 25);
+            this.WhereFile.Size = new System.Drawing.Size(500, 50);
             this.WhereFile.TabIndex = 6;
-            this.WhereFile.Text = "What is the file path to Employee Information?";
-            this.WhereFile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.WhereFile.Text = "What is the file path to Employee Information (.txt)?";
+            this.WhereFile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.WhereFile.UseMnemonic = false;
             // 
             // Filename
             // 
