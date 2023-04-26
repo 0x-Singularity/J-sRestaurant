@@ -13,22 +13,22 @@
 
 ## GUI
 
-Which other apps have you used before? (unanswered)
+Which other apps have you used before?
 Do you prefer simplicity and a minimalistic UI, or something more complex but all on one page? (read Meeting info, GUI)
-Does the font need to be big or small? (Any particular lettering fonts that catch the clients attention or any recommendation(s)) (unanswered)
+Does the font need to be big or small? (Any particular lettering fonts that catch the clients attention or any recommendation(s))
 What colors would match the aesthetic of your restaurant? (read Meeting info, GUI)
 How would you like your daily and yearly data represented? Sales, profit, menu item popularity, etc. (read meeting info, Restaurant Data)
 
 ## Software Architecture
 
-If you have one, what application do you currently have in place? (unanswered)
+If you have one, what application do you currently have in place?
 Should our software be running on a configured POS system, or on a desktop style machine? (read Meetin info, In-Restaurant Info)
 
 ## Data Storage
 
-What do you require for data storage and deletion? (unanswered)
+What do you require for data storage and deletion?
 Will the data be stored locally or remote? (read Meeting info, Data and Security)
-If remote, are you using a cloud based solution? (unanswered)
+If remote, are you using a cloud based solution?
 
 ## Functionality
 
@@ -38,7 +38,7 @@ What functions would you love to have on the product but aren’t considered nec
 What configurable features do you require? (catering is nice, but next release)
 Should the customer be given the option to rate their waiters? Wait staff go back and forth to tables
 If a customer wants to leave a tip should the customer be given specific percentage tip amounts or a custom tip option? (read Meeting info, In-Restaurant Info)
-What about seasonal items? (unanswered)
+What about seasonal items?
 
 ## Instructional Documentation
 
@@ -49,7 +49,7 @@ What would make reading the documentation and instructions for our system easier
 Is there a security protocol or authentication you prefer? (read Meeting info, Data and Security)
 Will cash be handled at the terminals or only credit cards? (read Meeting info, In-Restaurant Info)
 Will there be an admin account with exclusive privileges? (read Meeting info, Data and Security)
-In case of a system break(error) from an unknown person or bug/glitch should there be a system shutdown or lockdown in place? (unanswered)
+In case of a system break(error) from an unknown person or bug/glitch should there be a system shutdown or lockdown in place?
 In case of a system shutdown, should we implement a feature that allows you to keep track of information on paper until the system is back online? yes, (read Meeting info, Data and Security)
 
 ## Notes from the Interview:
