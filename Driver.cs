@@ -7,7 +7,7 @@ namespace Sprint_2_GUI_Group1_1
     internal static class Driver
     {
         /// <summary>
-        ///  The main entry point for the application.
+        /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()

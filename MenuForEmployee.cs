@@ -14,43 +14,90 @@ namespace Sprint_2_GUI_Group1_1
 {
     public partial class MenuForEmployee : UserControl
     {
+        /// <summary>
+        /// Attributes:
+        ///  CurrentEmployee (private pointer object of type Employee)
+        ///  EmployeeLogin (private pointer object of type EmployeeLoginScreen)
+        ///  DiningRoom (private pointer object of type DiningRoom)
+        ///  CurrentOrderDisplay (private pointer object of type CurrentOrderDisplay)
+        /// </summary>
         private Employee CurrentEmployee;
-        private bool isLoggedIn;
         private EmployeeLoginScreen EmployeeLogin;
         private DiningRoom DiningRoom;
         private CurrentOrderDisplay CurrentOrderDisplay;
+
+        /// <summary>
+        /// MenuForEmployee Constructor
+        /// </summary>
         public MenuForEmployee()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Adds the functionality to the GUI button to change screens with the EmployeeLoginScreen object.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Login_Click(object sender, EventArgs e)
         {
             Hide();
             EmployeeLogin.Show();
         }
-        internal void LogInCurrentEmployee(bool isLoggedIn, Employee CurrentEmployee)
+
+        /// <summary>
+        /// Sets the CurrentEmployee pointer to the passed in object.
+        /// Calls UpdateText method.
+        /// </summary>
+        /// <param name="isLoggedIn"></param>
+        /// <param name="CurrentEmployee"></param>
+        internal void LogInCurrentEmployee(Employee CurrentEmployee)
         {
             this.CurrentEmployee = CurrentEmployee;
             UpdateText();
-            isLoggedIn = true;
         }
+
+        /// <summary>
+        /// Sets the Text of ShowCurrentEmployee Label object to "Current Employee: " and the CurrentEmployee object's Name.
+        /// </summary>
         internal void UpdateText()
         {
             ShowCurrentEmployee.Text = "Current Employee: " + CurrentEmployee.GetEmployeeName();
         }
-        internal void ScreenPointer(EmployeeLoginScreen UserControlToPointTo)
+
+        /// <summary>
+        /// Points to specified object of type EmployeeLoginScreen named Pointer, allowing screen transitions.
+        /// </summary>
+        /// <param name="Pointer"></param>
+        internal void ScreenPointer(EmployeeLoginScreen Pointer)
         {
-            EmployeeLogin = UserControlToPointTo;
+            EmployeeLogin = Pointer;
         }
-        internal void ScreenPointer2(DiningRoom UserControlToPointTo)
+
+        /// <summary>
+        /// Points to specified object of type DiningRoom named Pointer, allowing screen transitions.
+        /// </summary>
+        /// <param name="Pointer"></param>
+        internal void ScreenPointer2(DiningRoom Pointer)
         {
-            DiningRoom = UserControlToPointTo;
+            DiningRoom = Pointer;
         }
-        internal void ScreenPointer3(CurrentOrderDisplay UserControlToPointTo)
+
+        /// <summary>
+        /// Points to specified object of type CurrentOrderDisplay named Pointer, allowing screen transitions.
+        /// </summary>
+        /// <param name="Pointer"></param>
+        internal void ScreenPointer3(CurrentOrderDisplay Pointer)
         {
-            CurrentOrderDisplay = UserControlToPointTo;
+            CurrentOrderDisplay = Pointer;
         }
+
+        /// <summary>
+        /// Calls the UpdateText method.
+        /// Adds the functionality to the GUI button to Change screens with the DiningRoom object.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DiningFloor_Click(object sender, EventArgs e)  
         {
             UpdateText();
@@ -72,10 +119,21 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Returns the CurrentEmployee object.
+        /// </summary>
+        /// <returns></returns>
         internal Employee GetCurrentEmployee()
         {
             return CurrentEmployee;
         }
+
+        /// <summary>
+        /// Adds the functionality to the GUI button to change screens with the CurrentOrderDisplay object's screen
+        /// Updates the CurrentOrderDisplay object's screen with the DisplayOnFIFOs method
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ToCurrentOrders_Click(object sender, EventArgs e)
         {
             CurrentOrderDisplay.Show();

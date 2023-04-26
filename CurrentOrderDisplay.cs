@@ -12,9 +12,19 @@ namespace Sprint_2_GUI_Group1_1
 {
     public partial class CurrentOrderDisplay : UserControl
     {
+        /// <summary>
+        /// Attributes
+        ///  OrderOverview (private object of type OrderOverview)
+        ///  EmployeeMenu (private object of type MenuForEmployee)
+        ///  FIFOs (private List containing Label objects)
+        /// </summary>
         private OrderOverview OrderOverview;
         private MenuForEmployee EmployeeMenu;
         private List<Label> FIFOs = new List<Label>();
+
+        /// <summary>
+        /// CurrentOrderDisplay Constructor
+        /// </summary>
         public CurrentOrderDisplay()
         {
             InitializeComponent();
@@ -24,14 +34,28 @@ namespace Sprint_2_GUI_Group1_1
             FIFOs.Add(FIFO4);
             FIFOs.Add(FIFO5);
         }
+
+        /// <summary>
+        /// Points to specified object of type OrderOverview named Pointer, allowing screen transitions
+        /// </summary>
+        /// <param name="Pointer"></param>
         internal void ScreenPointer(OrderOverview Pointer)
         {
             OrderOverview = Pointer;
         }
+
+        /// <summary>
+        /// Points to specified object of type MenuForEmployee named Pointer, allowing screen transitions
+        /// </summary>
+        /// <param name="Pointer"></param>
         internal void ScreenPointer2(MenuForEmployee Pointer)
         {
             EmployeeMenu = Pointer;
         }
+
+        /// <summary>
+        /// Displays the orders in a queue-like format and displays the current order to be worked on
+        /// </summary>
         internal void DisplayOnFIFOs()
         {
             List<Order> OrderList = OrderOverview.CurrentOrders;
@@ -76,12 +100,22 @@ namespace Sprint_2_GUI_Group1_1
             }
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button to change screens with the EmployeeMenu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ToMainMenu_Click(object sender, EventArgs e)
         {
             EmployeeMenu.Show();
             Hide();
         }
 
+        /// <summary>
+        /// Adds the functionality of the GUI button to update the list and complete the order to be worked on
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FIFO1CompleteOrder_Click(object sender, EventArgs e)
         {
             List<Order> OrderList = OrderOverview.CurrentOrders;
